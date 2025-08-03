@@ -8,6 +8,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.items.IItemHandler;
+import org.apache.commons.lang3.tuple.Triple;
 import slimeknights.tconstruct.common.SoundUtils;
 import slimeknights.tconstruct.common.Sounds;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
@@ -48,23 +49,24 @@ public class EasyReairHandler {
         List<ItemStack> items = getRepairItems(handler);
         if (items.isEmpty()) return;
 
-        Queue<ItemStack> repairableItems = new ArrayDeque<>();
-        MaterialRecipe recipe = null;
-        MaterialId id = null;
+        Queue<Triple<ItemStack, MaterialRecipe, MaterialId>> repairableItems = new ArrayDeque<>();
         for (ItemStack item : items) {
             Optional<MaterialRecipe> recipes = level.getRecipeManager().getRecipeFor(TinkerRecipeTypes.MATERIAL.get(), () -> item, level);
             if (recipes.isEmpty()) return;
 
-            recipe = recipes.get();
-            id = recipe.getMaterial().getId();
+            MaterialRecipe recipe = recipes.get();
+            MaterialId id = recipe.getMaterial().getId();
             if (MaterialRepairToolHook.canRepairWith(tool, id)) {
-                repairableItems.add(item);
+                repairableItems.add(Triple.of(item, recipe, id));
             }
         }
         if (repairableItems.isEmpty()) return;
 
         while (tool.getDamage() != 0 && !repairableItems.isEmpty()) {
-            ItemStack repairItem = repairableItems.poll();
+            Triple<ItemStack, MaterialRecipe, MaterialId> repairItemData = repairableItems.poll();
+            ItemStack repairItem = repairItemData.getLeft();
+            MaterialRecipe recipe = repairItemData.getMiddle();
+            MaterialId id = repairItemData.getRight();
 
             float base = MaterialRepairToolHook.repairAmount(tool, id);
             float repairPerItem = repairItem.getItem() instanceof IRepairKitItem kit ? base * kit.getRepairAmount() / 3f : recipe.scaleRepair(base);
