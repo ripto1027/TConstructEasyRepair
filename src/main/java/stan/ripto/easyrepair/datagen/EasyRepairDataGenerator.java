@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import stan.ripto.easyrepair.TConstructEasyRepair;
 import stan.ripto.easyrepair.datagen.client.item.EasyRepairItemModelProvider;
 import stan.ripto.easyrepair.datagen.client.lang.EasyRepairLanguageProvider;
+import stan.ripto.easyrepair.datagen.server.recipe.EasyRepairRecipeProvider;
 
 @Mod.EventBusSubscriber(modid = TConstructEasyRepair.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EasyRepairDataGenerator {
@@ -21,5 +22,6 @@ public class EasyRepairDataGenerator {
         gen.addProvider(event.includeClient(), new EasyRepairItemModelProvider(output, helper));
         gen.addProvider(event.includeClient(), new EasyRepairLanguageProvider.ENUS(output));
         gen.addProvider(event.includeClient(), new EasyRepairLanguageProvider.JAJP(output));
+        gen.addProvider(event.includeServer(), new EasyRepairRecipeProvider(output));
     }
 }
