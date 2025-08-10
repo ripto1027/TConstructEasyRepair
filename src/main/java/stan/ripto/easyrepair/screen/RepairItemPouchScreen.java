@@ -10,7 +10,7 @@ import stan.ripto.easyrepair.TConstructEasyRepair;
 
 public class RepairItemPouchScreen extends AbstractContainerScreen<RepairItemPouchMenu> {
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(TConstructEasyRepair.MODID, "textures/gui/repair_item_pouch.png");
+            ResourceLocation.fromNamespaceAndPath(TConstructEasyRepair.MOD_ID, "textures/gui/repair_item_pouch.png");
 
     public RepairItemPouchScreen(RepairItemPouchMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);

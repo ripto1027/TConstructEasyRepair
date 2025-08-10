@@ -12,6 +12,6 @@ public class RepairItemPouchInventory extends ItemStackHandler {
 
     @Override
     public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-        return RepairItemHandler.isRepairItem(stack);
+        return RepairItemHandler.isRepairItem(stack.getItem());
     }
 }

@@ -11,7 +11,7 @@ import stan.ripto.easyrepair.datagen.client.item.EasyRepairItemModelProvider;
 import stan.ripto.easyrepair.datagen.client.lang.EasyRepairLanguageProvider;
 import stan.ripto.easyrepair.datagen.server.recipe.EasyRepairRecipeProvider;
 
-@Mod.EventBusSubscriber(modid = TConstructEasyRepair.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = TConstructEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EasyRepairDataGenerator {
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent event) {

@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 import stan.ripto.easyrepair.TConstructEasyRepair;
 
 public class EasyRepairMenus {
-    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, TConstructEasyRepair.MODID);
+    public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(ForgeRegistries.MENU_TYPES, TConstructEasyRepair.MOD_ID);
 
     public static final RegistryObject<MenuType<RepairItemPouchMenu>> REPAIR_ITEM_POUCH =
             MENUS.register("repair_item_pouch", () -> IForgeMenuType.create(RepairItemPouchMenu::new));

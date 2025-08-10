@@ -8,7 +8,7 @@ import stan.ripto.easyrepair.item.EasyRepairItems;
 
 public class EasyRepairItemModelProvider extends ItemModelProvider {
     public EasyRepairItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, TConstructEasyRepair.MODID, existingFileHelper);
+        super(output, TConstructEasyRepair.MOD_ID, existingFileHelper);
     }
 
     @Override

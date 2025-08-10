@@ -19,13 +19,13 @@ public class EasyRepairRecipeProvider extends RecipeProvider {
     @SuppressWarnings("NullableProblems")
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EasyRepairItems.REPAIR_ITEM_POUCH.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, EasyRepairItems.REPAIR_ITEM_POUCH.get())
                 .define('A', Items.LEATHER)
                 .define('B', Items.WHITE_DYE)
                 .pattern(" A ")
                 .pattern("ABA")
                 .pattern(" A ")
-                .group(TConstructEasyRepair.MODID)
+                .group(TConstructEasyRepair.MOD_ID)
                 .unlockedBy(getHasName(Items.LEATHER), has(Items.LEATHER))
                 .unlockedBy(getHasName(Items.WHITE_DYE), has(Items.WHITE_DYE))
                 .save(writer);

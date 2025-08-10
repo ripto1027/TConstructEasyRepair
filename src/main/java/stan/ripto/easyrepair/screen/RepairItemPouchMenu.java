@@ -6,11 +6,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 import stan.ripto.easyrepair.event.RepairItemHandler;
+import stan.ripto.easyrepair.utils.EasyRepairUtils;
 
 public class RepairItemPouchMenu extends AbstractContainerMenu {
     private final ItemStack pouch;
@@ -18,14 +18,13 @@ public class RepairItemPouchMenu extends AbstractContainerMenu {
     public RepairItemPouchMenu(int containerId, Inventory playerInventory, ItemStack pouch) {
         super(EasyRepairMenus.REPAIR_ITEM_POUCH.get(), containerId);
         this.pouch = pouch;
-        IItemHandler pouchInventory = pouch.getCapability(ForgeCapabilities.ITEM_HANDLER)
-                .orElseThrow(() -> new IllegalStateException("Capability not found on pouch item."));
+        IItemHandler pouchInventory = EasyRepairUtils.getPouchHandler(pouch);
 
         for (int i = 0; i < 9; i++) {
             this.addSlot(new SlotItemHandler(pouchInventory, i, 8 + i * 18, 20) {
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
-                    return RepairItemHandler.isRepairItem(stack);
+                    return RepairItemHandler.isRepairItem(stack.getItem());
                 }
             });
         }

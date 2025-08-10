@@ -8,7 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 import stan.ripto.easyrepair.TConstructEasyRepair;
 
 public class EasyRepairItems {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TConstructEasyRepair.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TConstructEasyRepair.MOD_ID);
 
     public static final RegistryObject<Item> REPAIR_ITEM_POUCH = ITEMS.register("repair_item_pouch", RepairItemPouch::new);
 
