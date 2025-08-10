@@ -24,12 +24,10 @@ public class EasyRepairForgeEvents {
         Level level = player.level();
         if (!level.isClientSide) {
             InteractionHand hand = event.getHand();
-            if (hand != null) {
-                ItemStack stack = player.getItemInHand(event.getHand());
-                if (ToolDamageUtil.isBroken(stack)) {
-                    ToolStack tool = ToolStack.from(stack);
-                    AfterBreakHandler.tryRepair(player, level, tool);
-                }
+            ItemStack stack = hand == null ? player.getMainHandItem() : player.getItemInHand(hand);
+            if (ToolDamageUtil.isBroken(stack)) {
+                ToolStack tool = ToolStack.from(stack);
+                AfterBreakHandler.tryRepair(player, level, tool);
             }
         }
     }
