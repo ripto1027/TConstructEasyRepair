@@ -14,7 +14,7 @@ import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import stan.ripto.easyrepair.TConstructEasyRepair;
 import stan.ripto.easyrepair.capability.RepairItemPouchInventoryProvider;
 import stan.ripto.easyrepair.item.EasyRepairItems;
-import stan.ripto.easyrepair.utils.AfterBreakHandler;
+import stan.ripto.easyrepair.utils.repair.ToolRepairHandler;
 
 @Mod.EventBusSubscriber(modid = TConstructEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EasyRepairForgeEvents {
@@ -27,7 +27,7 @@ public class EasyRepairForgeEvents {
             ItemStack stack = hand == null ? player.getMainHandItem() : player.getItemInHand(hand);
             if (ToolDamageUtil.isBroken(stack)) {
                 ToolStack tool = ToolStack.from(stack);
-                AfterBreakHandler.tryRepair(player, level, tool);
+                ToolRepairHandler.tryRepair(player, level, tool);
             }
         }
     }

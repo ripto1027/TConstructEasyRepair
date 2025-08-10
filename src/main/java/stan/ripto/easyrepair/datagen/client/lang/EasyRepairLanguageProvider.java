@@ -3,7 +3,7 @@ package stan.ripto.easyrepair.datagen.client.lang;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 import stan.ripto.easyrepair.TConstructEasyRepair;
-import stan.ripto.easyrepair.utils.AfterBreakHandler;
+import stan.ripto.easyrepair.utils.repair.ToolRepairHandler;
 import stan.ripto.easyrepair.item.EasyRepairItems;
 
 public class EasyRepairLanguageProvider {
@@ -15,7 +15,7 @@ public class EasyRepairLanguageProvider {
         @Override
         protected void addTranslations() {
             addItem(EasyRepairItems.REPAIR_ITEM_POUCH, "Repair Item Pouch");
-            add(AfterBreakHandler.POUCH_EMPTY_MESSAGE, "The pouch is empty. Refill repair materials.");
+            add(ToolRepairHandler.POUCH_EMPTY_MESSAGE, "The pouch is empty. Refill repair materials.");
         }
     }
 
@@ -27,7 +27,7 @@ public class EasyRepairLanguageProvider {
         @Override
         protected void addTranslations() {
             addItem(EasyRepairItems.REPAIR_ITEM_POUCH, "リペアアイテムポーチ");
-            add(AfterBreakHandler.POUCH_EMPTY_MESSAGE, "ポーチが空になりました。修理素材を補充してください。");
+            add(ToolRepairHandler.POUCH_EMPTY_MESSAGE, "ポーチが空になりました。修理素材を補充してください。");
         }
     }
 }
