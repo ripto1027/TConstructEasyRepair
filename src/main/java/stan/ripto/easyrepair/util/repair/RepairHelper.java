@@ -4,6 +4,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.items.IItemHandler;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
 import slimeknights.tconstruct.library.recipe.TinkerRecipeTypes;
@@ -24,12 +25,14 @@ public class RepairHelper {
     public static List<ItemStack> findPouch(Player player) {
         List<ItemStack> stacks = new ArrayList<>();
 
-        ICuriosItemHandler handler = CuriosApi.getCuriosInventory(player).orElseThrow(() -> new IllegalStateException("Pouch not found."));
-        List<SlotResult> results = handler.findCurios("pouch");
-        for (SlotResult result : results) {
-            ItemStack stack = result.stack();
-            if (isPouch(stack)) {
-                stacks.add(stack);
+        if (ModList.get().isLoaded(CuriosApi.MODID)) {
+            ICuriosItemHandler handler = CuriosApi.getCuriosInventory(player).orElseThrow(() -> new IllegalStateException("Pouch not found."));
+            List<SlotResult> results = handler.findCurios("pouch");
+            for (SlotResult result : results) {
+                ItemStack stack = result.stack();
+                if (isPouch(stack)) {
+                    stacks.add(stack);
+                }
             }
         }
 
