@@ -1,6 +1,6 @@
 package stan.ripto.easyrepair.capability;
 
-import stan.ripto.easyrepair.utils.PouchTier;
+import stan.ripto.easyrepair.util.PouchTier;
 
 public class RepairItemPouchIIInventoryProvider extends AbstractPouchInventoryProvider {
     public RepairItemPouchIIInventoryProvider() {

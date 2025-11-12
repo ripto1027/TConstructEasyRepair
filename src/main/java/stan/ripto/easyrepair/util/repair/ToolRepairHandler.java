@@ -1,4 +1,4 @@
-package stan.ripto.easyrepair.utils.repair;
+package stan.ripto.easyrepair.util.repair;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -9,7 +9,7 @@ import slimeknights.tconstruct.common.SoundUtils;
 import slimeknights.tconstruct.common.Sounds;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import stan.ripto.easyrepair.datagen.client.lang.TranslateKeys;
-import stan.ripto.easyrepair.utils.EasyRepairUtils;
+import stan.ripto.easyrepair.util.EasyRepairUtils;
 
 import java.util.*;
 

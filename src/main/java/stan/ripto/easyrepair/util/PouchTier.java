@@ -1,4 +1,4 @@
-package stan.ripto.easyrepair.utils;
+package stan.ripto.easyrepair.util;
 
 import net.minecraft.resources.ResourceLocation;
 import stan.ripto.easyrepair.TConstructEasyRepair;

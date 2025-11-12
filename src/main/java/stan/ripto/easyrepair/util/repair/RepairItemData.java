@@ -1,4 +1,4 @@
-package stan.ripto.easyrepair.utils.repair;
+package stan.ripto.easyrepair.util.repair;
 
 import net.minecraft.world.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;

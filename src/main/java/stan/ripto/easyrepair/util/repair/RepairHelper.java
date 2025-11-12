@@ -1,4 +1,4 @@
-package stan.ripto.easyrepair.utils.repair;
+package stan.ripto.easyrepair.util.repair;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.player.Player;

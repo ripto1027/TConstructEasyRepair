@@ -7,7 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import stan.ripto.easyrepair.utils.PouchTier;
+import stan.ripto.easyrepair.util.PouchTier;
 
 public class AbstractPouchScreen<T extends AbstractContainerMenu> extends AbstractContainerScreen<T> {
     protected final ResourceLocation texture;

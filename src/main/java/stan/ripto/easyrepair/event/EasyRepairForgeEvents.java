@@ -22,7 +22,7 @@ import stan.ripto.easyrepair.item.EasyRepairItems;
 import stan.ripto.easyrepair.key.EasyRepairKeyMappings;
 import stan.ripto.easyrepair.network.EasyRepairNetwork;
 import stan.ripto.easyrepair.network.PouchInventoryOpenPacket;
-import stan.ripto.easyrepair.utils.repair.ToolRepairHandler;
+import stan.ripto.easyrepair.util.repair.ToolRepairHandler;
 
 @Mod.EventBusSubscriber(modid = TConstructEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EasyRepairForgeEvents {

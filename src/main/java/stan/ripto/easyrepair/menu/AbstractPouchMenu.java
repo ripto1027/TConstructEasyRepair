@@ -11,9 +11,9 @@ import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import stan.ripto.easyrepair.event.RepairItemHandler;
-import stan.ripto.easyrepair.utils.EasyRepairUtils;
-import stan.ripto.easyrepair.utils.PouchTier;
-import stan.ripto.easyrepair.utils.repair.RepairHelper;
+import stan.ripto.easyrepair.util.EasyRepairUtils;
+import stan.ripto.easyrepair.util.PouchTier;
+import stan.ripto.easyrepair.util.repair.RepairHelper;
 
 public abstract class AbstractPouchMenu extends AbstractContainerMenu {
     protected final ItemStack pouch;

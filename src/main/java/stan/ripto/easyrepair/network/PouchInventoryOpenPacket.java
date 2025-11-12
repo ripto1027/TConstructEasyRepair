@@ -10,7 +10,7 @@ import net.minecraftforge.network.NetworkEvent;
 import stan.ripto.easyrepair.item.RepairItemPouchI;
 import stan.ripto.easyrepair.item.RepairItemPouchII;
 import stan.ripto.easyrepair.item.RepairItemPouchIII;
-import stan.ripto.easyrepair.utils.repair.RepairHelper;
+import stan.ripto.easyrepair.util.repair.RepairHelper;
 
 import java.util.List;
 import java.util.function.Supplier;
