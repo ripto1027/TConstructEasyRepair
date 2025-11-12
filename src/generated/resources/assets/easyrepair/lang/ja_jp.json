@@ -1,4 +1,7 @@
 {
-  "item.easyrepair.repair_item_pouch": "リペアアイテムポーチ",
-  "message.easyrepair.pouch_empty": "ポーチが空になりました。修理素材を補充してください。"
+  "curios.identifier.pouch": "ポーチ",
+  "item.easyrepair.repair_item_pouch_i": "リペアアイテムポーチI",
+  "item.easyrepair.repair_item_pouch_ii": "リペアアイテムポーチII",
+  "item.easyrepair.repair_item_pouch_iii": "リペアアイテムポーチIII",
+  "message.easyrepair.pouch_empty": "修理に失敗しました。ポーチに使用しているツールに対応した修理素材が入っているか確認してください。"
 }

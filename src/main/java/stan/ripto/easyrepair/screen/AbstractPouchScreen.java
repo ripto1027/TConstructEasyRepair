@@ -6,16 +6,18 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import stan.ripto.easyrepair.TConstructEasyRepair;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import stan.ripto.easyrepair.utils.PouchTier;
 
-public class RepairItemPouchScreen extends AbstractContainerScreen<RepairItemPouchMenu> {
-    private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(TConstructEasyRepair.MOD_ID, "textures/gui/repair_item_pouch.png");
+public class AbstractPouchScreen<T extends AbstractContainerMenu> extends AbstractContainerScreen<T> {
+    protected final ResourceLocation texture;
 
-    public RepairItemPouchScreen(RepairItemPouchMenu menu, Inventory playerInventory, Component title) {
+    public AbstractPouchScreen(T menu, Inventory playerInventory, Component title, PouchTier tier) {
         super(menu, playerInventory, title);
-        this.imageHeight = 133;
-        this.inventoryLabelY = this.imageHeight - 94;
+        this.texture = tier.getTexture();
+        this.imageHeight = 111 + tier.getRows() * 18;
+        this.imageWidth = 175;
+        this.inventoryLabelY = this.imageHeight - 91;
     }
 
     @Override
@@ -23,7 +25,7 @@ public class RepairItemPouchScreen extends AbstractContainerScreen<RepairItemPou
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        guiGraphics.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight);
+        guiGraphics.blit(this.texture, x, y, 0, 0, this.imageWidth, this.imageHeight);
     }
 
     @SuppressWarnings("NullableProblems")

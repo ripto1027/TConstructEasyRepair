@@ -11,22 +11,27 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import stan.ripto.easyrepair.inventory.RepairItemPouchInventory;
 
-public class RepairItemPouchInventoryProvider implements ICapabilitySerializable<CompoundTag> {
-    private final RepairItemPouchInventory INVENTORY = new RepairItemPouchInventory(9);
-    private final LazyOptional<IItemHandler> OPTIONAL = LazyOptional.of(() -> INVENTORY);
+public abstract class AbstractPouchInventoryProvider implements ICapabilitySerializable<CompoundTag> {
+    private final RepairItemPouchInventory inventory;
+    private final LazyOptional<IItemHandler> handler;
+
+    public AbstractPouchInventoryProvider(int size) {
+        this.inventory = new RepairItemPouchInventory(size);
+        this.handler = LazyOptional.of(() -> inventory);
+    }
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return cap == ForgeCapabilities.ITEM_HANDLER ? OPTIONAL.cast() : LazyOptional.empty();
+        return cap == ForgeCapabilities.ITEM_HANDLER ? handler.cast() : LazyOptional.empty();
     }
 
     @Override
     public CompoundTag serializeNBT() {
-        return INVENTORY.serializeNBT();
+        return inventory.serializeNBT();
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        INVENTORY.deserializeNBT(nbt);
+        inventory.deserializeNBT(nbt);
     }
 }

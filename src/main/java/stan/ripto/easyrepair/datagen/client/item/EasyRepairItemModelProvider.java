@@ -13,6 +13,8 @@ public class EasyRepairItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(EasyRepairItems.REPAIR_ITEM_POUCH.get());
+        basicItem(EasyRepairItems.REPAIR_ITEM_POUCH_I.get());
+        basicItem(EasyRepairItems.REPAIR_ITEM_POUCH_II.get());
+        basicItem(EasyRepairItems.REPAIR_ITEM_POUCH_III.get());
     }
 }

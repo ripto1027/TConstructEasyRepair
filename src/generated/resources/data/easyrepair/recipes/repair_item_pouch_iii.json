@@ -1,22 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "group": "easyrepair",
+  "group": "easyrepair_III",
   "key": {
     "A": {
-      "item": "minecraft:leather"
+      "item": "minecraft:diamond"
     },
     "B": {
-      "item": "minecraft:white_dye"
+      "item": "easyrepair:repair_item_pouch_ii"
     }
   },
   "pattern": [
-    " A ",
-    "ABA",
-    " A "
+    "ABA"
   ],
   "result": {
-    "item": "easyrepair:repair_item_pouch"
+    "item": "easyrepair:repair_item_pouch_iii"
   },
   "show_notification": true
 }

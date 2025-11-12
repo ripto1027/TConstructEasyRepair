@@ -7,7 +7,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import stan.ripto.easyrepair.event.EasyRepairModEvents;
 import stan.ripto.easyrepair.event.RepairItemHandler;
 import stan.ripto.easyrepair.item.EasyRepairItems;
-import stan.ripto.easyrepair.screen.EasyRepairMenus;
+import stan.ripto.easyrepair.menu.EasyRepairMenus;
 
 @Mod(TConstructEasyRepair.MOD_ID)
 public class TConstructEasyRepair {
@@ -15,14 +15,15 @@ public class TConstructEasyRepair {
 
     public TConstructEasyRepair(FMLJavaModLoadingContext context) {
         IEventBus modBus = context.getModEventBus();
-        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
 
         EasyRepairItems.register(modBus);
         EasyRepairMenus.register(modBus);
 
         modBus.addListener(EasyRepairModEvents::onClientSetup);
         modBus.addListener(EasyRepairModEvents::onBuildCreativeModeTabContents);
+        modBus.addListener(EasyRepairModEvents::onRegisterKeyMapping);
+        modBus.addListener(EasyRepairModEvents::onCommonSetup);
 
-        forgeBus.addListener(RepairItemHandler::onServerStarting);
+        MinecraftForge.EVENT_BUS.addListener(RepairItemHandler::onServerStarting);
     }
 }

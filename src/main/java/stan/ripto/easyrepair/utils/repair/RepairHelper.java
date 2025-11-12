@@ -12,20 +12,39 @@ import slimeknights.tconstruct.library.tools.definition.module.material.Material
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.part.IRepairKitItem;
 import stan.ripto.easyrepair.item.EasyRepairItems;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotResult;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class RepairHelper {
-    public static int findPouch(Player player) {
-        NonNullList<ItemStack> items = player.getInventory().items;
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).is(EasyRepairItems.REPAIR_ITEM_POUCH.get())) {
-                return i;
+    public static List<ItemStack> findPouch(Player player) {
+        List<ItemStack> stacks = new ArrayList<>();
+
+        ICuriosItemHandler handler = CuriosApi.getCuriosInventory(player).orElseThrow(() -> new IllegalStateException("Pouch not found."));
+        List<SlotResult> results = handler.findCurios("pouch");
+        for (SlotResult result : results) {
+            ItemStack stack = result.stack();
+            if (isPouch(stack)) {
+                stacks.add(stack);
             }
         }
-        return -1;
+
+        NonNullList<ItemStack> items = player.getInventory().items;
+        for (ItemStack item : items) {
+            if (isPouch(item)) {
+                stacks.add(item);
+            }
+        }
+
+        return stacks;
+    }
+
+    public static boolean isPouch(ItemStack stack) {
+        return !stack.isEmpty() && (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_I.get()) || stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_II.get()) || stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_III.get()));
     }
 
     public static List<ItemStack> getRepairItems(IItemHandler handler) {
