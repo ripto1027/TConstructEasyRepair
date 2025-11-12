@@ -5,18 +5,18 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
-import stan.ripto.easyrepair.TConstructEasyRepair;
+import stan.ripto.easyrepair.TinkersEasyRepair;
 import stan.ripto.easyrepair.item.EasyRepairItems;
 
 public class EasyRepairTabs {
     public static final DeferredRegister<CreativeModeTab> TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TConstructEasyRepair.MOD_ID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TinkersEasyRepair.MOD_ID);
 
     public static void register(IEventBus bus) {
         TABS.register(
-                "tconstruct_easy_repair_tab",
+                "tinkers_easy_repair_tab",
                 () -> CreativeModeTab.builder()
-                        .title(Component.literal("TConstruct Easy Repair"))
+                        .title(Component.literal("Tinkers' Easy Repair"))
                         .icon(EasyRepairItems.REPAIR_ITEM_POUCH_I.get()::getDefaultInstance)
                         .displayItems((param, output) -> {
                             output.accept(EasyRepairItems.REPAIR_ITEM_POUCH_I.get());

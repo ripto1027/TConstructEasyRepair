@@ -10,11 +10,11 @@ import stan.ripto.easyrepair.item.EasyRepairItems;
 import stan.ripto.easyrepair.menu.EasyRepairMenus;
 import stan.ripto.easyrepair.tab.EasyRepairTabs;
 
-@Mod(TConstructEasyRepair.MOD_ID)
-public class TConstructEasyRepair {
+@Mod(TinkersEasyRepair.MOD_ID)
+public class TinkersEasyRepair {
     public static final String MOD_ID = "easyrepair";
 
-    public TConstructEasyRepair(FMLJavaModLoadingContext context) {
+    public TinkersEasyRepair(FMLJavaModLoadingContext context) {
         IEventBus modBus = context.getModEventBus();
 
         EasyRepairItems.register(modBus);

@@ -14,7 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
-import stan.ripto.easyrepair.TConstructEasyRepair;
+import stan.ripto.easyrepair.TinkersEasyRepair;
 import stan.ripto.easyrepair.capability.RepairItemPouchIIIInventoryProvider;
 import stan.ripto.easyrepair.capability.RepairItemPouchIIInventoryProvider;
 import stan.ripto.easyrepair.capability.RepairItemPouchIInventoryProvider;
@@ -24,7 +24,7 @@ import stan.ripto.easyrepair.network.EasyRepairNetwork;
 import stan.ripto.easyrepair.network.PouchInventoryOpenPacket;
 import stan.ripto.easyrepair.util.repair.ToolRepairHandler;
 
-@Mod.EventBusSubscriber(modid = TConstructEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = TinkersEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EasyRepairForgeEvents {
     @SubscribeEvent
     public static void onPlayerDestroyItem(PlayerDestroyItemEvent event) {
@@ -45,19 +45,19 @@ public class EasyRepairForgeEvents {
         ItemStack stack = event.getObject();
         if (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_I.get())) {
             event.addCapability(
-                    ResourceLocation.fromNamespaceAndPath(TConstructEasyRepair.MOD_ID, "inventory"),
+                    ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory"),
                     new RepairItemPouchIInventoryProvider()
             );
 
         } else if (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_II.get())) {
             event.addCapability(
-                    ResourceLocation.fromNamespaceAndPath(TConstructEasyRepair.MOD_ID, "inventory"),
+                    ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory"),
                     new RepairItemPouchIIInventoryProvider()
             );
 
         } else if (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_III.get())) {
             event.addCapability(
-                    ResourceLocation.fromNamespaceAndPath(TConstructEasyRepair.MOD_ID, "inventory"),
+                    ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory"),
                     new RepairItemPouchIIIInventoryProvider()
             );
         }

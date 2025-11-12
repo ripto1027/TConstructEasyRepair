@@ -7,7 +7,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import stan.ripto.easyrepair.TConstructEasyRepair;
+import stan.ripto.easyrepair.TinkersEasyRepair;
 import stan.ripto.easyrepair.datagen.client.item.EasyRepairItemModelProvider;
 import stan.ripto.easyrepair.datagen.client.lang.EasyRepairLanguageProvider;
 import stan.ripto.easyrepair.datagen.server.curios.EasyRepairCuriosDataProvider;
@@ -15,7 +15,7 @@ import stan.ripto.easyrepair.datagen.server.recipe.EasyRepairRecipeProvider;
 
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(modid = TConstructEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = TinkersEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EasyRepairDataGenerator {
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent event) {
