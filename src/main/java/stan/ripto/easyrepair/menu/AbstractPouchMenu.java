@@ -60,7 +60,7 @@ public abstract class AbstractPouchMenu extends AbstractContainerMenu {
             for(int k = 0; k < 9; ++k) {
                 this.addSlot(new Slot(
                         playerInventory,
-                        k + l * 10,
+                        k + (l + 1) * 9,
                         8 + k * 18,
                         30 + this.playerInvMoveInt + l * 18
                 ));

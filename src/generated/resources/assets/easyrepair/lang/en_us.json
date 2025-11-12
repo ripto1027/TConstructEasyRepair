@@ -3,5 +3,7 @@
   "item.easyrepair.repair_item_pouch_i": "Repair Item Pouch I",
   "item.easyrepair.repair_item_pouch_ii": "Repair Item Pouch II",
   "item.easyrepair.repair_item_pouch_iii": "Repair Item Pouch III",
+  "key.easyrepair.category": "TConstruct Easy Repair",
+  "key.easyrepair.inventory_open.description": "Open the inventory of the pouch",
   "message.easyrepair.pouch_empty": "Repair failed. Please check that it contains the correct repair material for the tool you're using."
 }

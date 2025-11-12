@@ -33,7 +33,7 @@ public class EasyRepairLanguageProvider {
             addItem(EasyRepairItems.REPAIR_ITEM_POUCH_I, "リペアアイテムポーチI");
             addItem(EasyRepairItems.REPAIR_ITEM_POUCH_II, "リペアアイテムポーチII");
             addItem(EasyRepairItems.REPAIR_ITEM_POUCH_III, "リペアアイテムポーチIII");
-            add(TranslateKeys.POUCH_EMPTY_MESSAGE, "修理に失敗しました。ポーチに使用しているツールに対応した修理素材が入っているか確認してください。");
+            add(TranslateKeys.POUCH_EMPTY_MESSAGE, "修理に失敗しました。使用しているツールに対応した修理素材がポーチに入っているか確認してください。");
             add(TranslateKeys.POUCH_CURIOS_SLOT_NAME, "ポーチ");
             add(TranslateKeys.OPEN_POUCH_INVENTORY, "ポーチのインベントリを開く");
         }

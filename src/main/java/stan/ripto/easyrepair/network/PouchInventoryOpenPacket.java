@@ -15,6 +15,7 @@ import stan.ripto.easyrepair.utils.repair.RepairHelper;
 import java.util.List;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
 public class PouchInventoryOpenPacket {
     public static void encode(PouchInventoryOpenPacket packet, FriendlyByteBuf buf) {}
 

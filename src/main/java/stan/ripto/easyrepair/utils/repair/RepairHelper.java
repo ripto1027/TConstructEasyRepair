@@ -43,7 +43,7 @@ public class RepairHelper {
         return stacks;
     }
 
-    public static boolean isPouch(ItemStack stack) {
+    private static boolean isPouch(ItemStack stack) {
         return !stack.isEmpty() && (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_I.get()) || stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_II.get()) || stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_III.get()));
     }
 

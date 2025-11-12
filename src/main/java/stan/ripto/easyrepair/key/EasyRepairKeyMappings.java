@@ -15,5 +15,5 @@ public class EasyRepairKeyMappings {
                     InputConstants.Type.KEYSYM,
                     GLFW.GLFW_KEY_R,
                     TranslateKeys.KEY_CATEGORY
-            );
+    );
 }

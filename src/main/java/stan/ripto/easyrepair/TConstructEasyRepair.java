@@ -8,6 +8,7 @@ import stan.ripto.easyrepair.event.EasyRepairModEvents;
 import stan.ripto.easyrepair.event.RepairItemHandler;
 import stan.ripto.easyrepair.item.EasyRepairItems;
 import stan.ripto.easyrepair.menu.EasyRepairMenus;
+import stan.ripto.easyrepair.tab.EasyRepairTabs;
 
 @Mod(TConstructEasyRepair.MOD_ID)
 public class TConstructEasyRepair {
@@ -18,6 +19,7 @@ public class TConstructEasyRepair {
 
         EasyRepairItems.register(modBus);
         EasyRepairMenus.register(modBus);
+        EasyRepairTabs.register(modBus);
 
         modBus.addListener(EasyRepairModEvents::onClientSetup);
         modBus.addListener(EasyRepairModEvents::onBuildCreativeModeTabContents);

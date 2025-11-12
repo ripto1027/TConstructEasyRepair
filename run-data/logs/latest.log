@@ -1,29 +1,29 @@
-[1211月2025 22:20:36.152] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\ripto\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, easyrepair, --all, --output, C:\MinecraftModDevelopment\TConstructEasyRepair\src\generated\resources, --existing, C:\MinecraftModDevelopment\TConstructEasyRepair\src\main\resources]
-[1211月2025 22:20:36.160] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.15 by Microsoft; OS Windows 11 arch amd64 version 10.0
-[1211月2025 22:20:36.321] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[1211月2025 22:20:36.382] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/ripto/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[1211月2025 22:20:36.751] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ripto\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[1211月2025 22:20:36.755] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ripto\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[1211月2025 22:20:36.762] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ripto\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[1211月2025 22:20:36.766] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ripto\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
-[1211月2025 22:20:36.962] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[1211月2025 22:20:40.536] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[1211月2025 22:20:40.536] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\ripto\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, easyrepair, --all, --output, C:\MinecraftModDevelopment\TConstructEasyRepair\src\generated\resources, --existing, C:\MinecraftModDevelopment\TConstructEasyRepair\src\main\resources]
-[1211月2025 22:20:40.901] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using C:\MinecraftModDevelopment\TConstructEasyRepair\build\createSrgToMcp\output.srg
-[1211月2025 22:20:41.437] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [easyrepair]
-[1211月2025 22:20:46.295] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
-[1211月2025 22:20:46.295] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
-[1211月2025 22:20:49.883] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/ripto/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[1211月2025 22:20:49.885] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/ripto/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[1211月2025 22:20:50.283] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: easyrepair
-[1211月2025 22:20:50.300] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: easyrepair finished after 16 ms
-[1211月2025 22:20:50.300] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: en_us
-[1211月2025 22:20:50.303] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: en_us finished after 1 ms
-[1211月2025 22:20:50.303] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: ja_jp
-[1211月2025 22:20:50.303] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: ja_jp finished after 1 ms
-[1211月2025 22:20:50.303] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[1211月2025 22:20:50.319] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 15 ms
-[1211月2025 22:20:50.319] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Curios for easyrepair
-[1211月2025 22:20:50.325] [main/INFO] [net.minecraft.data.DataGenerator/]: Curios for easyrepair finished after 4 ms
-[1211月2025 22:20:50.325] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 42 ms
-[1211月2025 22:20:50.333] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 13, old count: 7, new count: 14, removed stale: 0, written: 10
+[1311月2025 00:17:22.697] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\ripto\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, easyrepair, --all, --output, C:\MinecraftModDevelopment\TConstructEasyRepair\src\generated\resources, --existing, C:\MinecraftModDevelopment\TConstructEasyRepair\src\main\resources]
+[1311月2025 00:17:22.706] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.15 by Microsoft; OS Windows 11 arch amd64 version 10.0
+[1311月2025 00:17:22.876] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[1311月2025 00:17:22.945] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/ripto/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[1311月2025 00:17:23.254] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ripto\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[1311月2025 00:17:23.258] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ripto\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[1311月2025 00:17:23.260] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ripto\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[1311月2025 00:17:23.260] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\ripto\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[1311月2025 00:17:23.435] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[1311月2025 00:17:26.699] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[1311月2025 00:17:26.713] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\ripto\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, easyrepair, --all, --output, C:\MinecraftModDevelopment\TConstructEasyRepair\src\generated\resources, --existing, C:\MinecraftModDevelopment\TConstructEasyRepair\src\main\resources]
+[1311月2025 00:17:27.001] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using C:\MinecraftModDevelopment\TConstructEasyRepair\build\createSrgToMcp\output.srg
+[1311月2025 00:17:27.425] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [easyrepair]
+[1311月2025 00:17:32.249] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[1311月2025 00:17:32.251] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[1311月2025 00:17:35.596] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/ripto/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[1311月2025 00:17:35.600] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/ripto/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[1311月2025 00:17:36.018] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: easyrepair
+[1311月2025 00:17:36.026] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: easyrepair finished after 6 ms
+[1311月2025 00:17:36.026] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: en_us
+[1311月2025 00:17:36.026] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: en_us finished after 1 ms
+[1311月2025 00:17:36.026] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Languages: ja_jp
+[1311月2025 00:17:36.026] [main/INFO] [net.minecraft.data.DataGenerator/]: Languages: ja_jp finished after 0 ms
+[1311月2025 00:17:36.026] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[1311月2025 00:17:36.037] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 10 ms
+[1311月2025 00:17:36.037] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Curios for easyrepair
+[1311月2025 00:17:36.044] [main/INFO] [net.minecraft.data.DataGenerator/]: Curios for easyrepair finished after 3 ms
+[1311月2025 00:17:36.044] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 24 ms
+[1311月2025 00:17:36.050] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 13, old count: 13, new count: 14, removed stale: 0, written: 2

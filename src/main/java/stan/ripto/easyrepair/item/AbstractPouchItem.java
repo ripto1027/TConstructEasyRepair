@@ -26,7 +26,7 @@ public class AbstractPouchItem<T extends AbstractPouchMenuProvider> extends Item
         if (usedHand == InteractionHand.OFF_HAND) return InteractionResultHolder.fail(player.getItemInHand(usedHand));
         ItemStack pouch = player.getItemInHand(usedHand);
         openMenu(level, player, pouch);
-        return InteractionResultHolder.sidedSuccess(player.getItemInHand(usedHand), level.isClientSide);
+        return InteractionResultHolder.sidedSuccess(player.getItemInHand(usedHand), level.isClientSide());
     }
 
     public void openMenu(Level level, Player player, ItemStack pouch) {
