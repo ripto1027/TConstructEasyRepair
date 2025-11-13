@@ -26,10 +26,14 @@ public class ToolRepairHandler {
 
         if (rItems.isEmpty()) {
             player.sendSystemMessage(Component.translatable(TranslateKeys.POUCH_EMPTY_MESSAGE));
+            return;
         }
 
         List<RepairItemData> repairItemData = RepairHelper.getRepairItemData(rItems, level, tool);
-        if (repairItemData.isEmpty()) return;
+        if (repairItemData.isEmpty()) {
+            player.sendSystemMessage(Component.translatable(TranslateKeys.POUCH_EMPTY_MESSAGE));
+            return;
+        }
 
         for (RepairItemData data : repairItemData) {
             data.repair();

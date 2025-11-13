@@ -7,9 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkEvent;
-import stan.ripto.easyrepair.item.RepairItemPouchI;
-import stan.ripto.easyrepair.item.RepairItemPouchII;
-import stan.ripto.easyrepair.item.RepairItemPouchIII;
+import stan.ripto.easyrepair.item.AbstractPouchItem;
 import stan.ripto.easyrepair.util.repair.RepairHelper;
 
 import java.util.List;
@@ -37,15 +35,11 @@ public class PouchInventoryOpenPacket {
             ItemStack pouchStack = pouches.get(0);
             if (pouchStack == null || pouchStack.isEmpty()) return;
 
-            Item pouch = pouchStack.getItem();
-            if (pouch.equals(Items.AIR)) return;
+            Item pouchItem = pouchStack.getItem();
+            if (pouchItem.equals(Items.AIR)) return;
 
-            if (pouch instanceof RepairItemPouchI pouchI) {
-                pouchI.openMenu(level, player, pouchStack);
-            } else if (pouch instanceof RepairItemPouchII pouchII) {
-                pouchII.openMenu(level, player, pouchStack);
-            } else if (pouch instanceof RepairItemPouchIII pouchIII) {
-                pouchIII.openMenu(level, player, pouchStack);
+            if (pouchItem instanceof AbstractPouchItem<?> pouch) {
+                pouch.openMenu(level, player, pouchStack);
             }
         });
     }
