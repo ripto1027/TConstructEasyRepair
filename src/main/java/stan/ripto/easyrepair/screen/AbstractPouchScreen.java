@@ -10,14 +10,19 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import stan.ripto.easyrepair.util.PouchTier;
 
 public class AbstractPouchScreen<T extends AbstractContainerMenu> extends AbstractContainerScreen<T> {
+    private static final int IMAGE_HEIGHT_BASE = 111;
+    private static final int IMAGE_WIDTH_BASE = 175;
+    private static final int SLOT_LENGTH = 18;
+    private static final int INV_LABEL_Y_MOVE_INT = 91;
+
     protected final ResourceLocation texture;
 
     public AbstractPouchScreen(T menu, Inventory playerInventory, Component title, PouchTier tier) {
         super(menu, playerInventory, title);
         this.texture = tier.getTexture();
-        this.imageHeight = 111 + tier.getRows() * 18;
-        this.imageWidth = 175;
-        this.inventoryLabelY = this.imageHeight - 91;
+        this.imageHeight = IMAGE_HEIGHT_BASE + tier.getRows() * SLOT_LENGTH;
+        this.imageWidth = IMAGE_WIDTH_BASE;
+        this.inventoryLabelY = this.imageHeight - INV_LABEL_Y_MOVE_INT;
     }
 
     @Override

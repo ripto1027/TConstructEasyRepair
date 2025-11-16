@@ -29,6 +29,10 @@ public class RepairItemData {
         }
     }
 
+    public ItemStack getRepairItemStack() {
+        return this.repairItemStack;
+    }
+
     public static float getRepairPerItem(ToolStack tool, float repairPerItem) {
         for (ModifierEntry entry : tool.getModifierList()) {
             repairPerItem = entry.getHook(ModifierHooks.REPAIR_FACTOR).getRepairFactor(tool, entry, repairPerItem);

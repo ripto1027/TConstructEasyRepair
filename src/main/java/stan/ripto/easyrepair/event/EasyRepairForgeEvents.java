@@ -26,11 +26,14 @@ import stan.ripto.easyrepair.util.repair.ToolRepairHandler;
 
 @Mod.EventBusSubscriber(modid = TinkersEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EasyRepairForgeEvents {
+    private static final ResourceLocation INVENTORY =
+            ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory");
+
     @SubscribeEvent
     public static void onPlayerDestroyItem(PlayerDestroyItemEvent event) {
         Player player = event.getEntity();
         Level level = player.level();
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             InteractionHand hand = event.getHand();
             ItemStack stack = hand == null ? player.getMainHandItem() : player.getItemInHand(hand);
             if (ToolDamageUtil.isBroken(stack)) {
@@ -44,22 +47,13 @@ public class EasyRepairForgeEvents {
     public static void onAttachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
         ItemStack stack = event.getObject();
         if (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_I.get())) {
-            event.addCapability(
-                    ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory"),
-                    new RepairItemPouchIInventoryProvider()
-            );
+            event.addCapability(INVENTORY, new RepairItemPouchIInventoryProvider());
 
         } else if (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_II.get())) {
-            event.addCapability(
-                    ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory"),
-                    new RepairItemPouchIIInventoryProvider()
-            );
+            event.addCapability(INVENTORY, new RepairItemPouchIIInventoryProvider());
 
         } else if (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_III.get())) {
-            event.addCapability(
-                    ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory"),
-                    new RepairItemPouchIIIInventoryProvider()
-            );
+            event.addCapability(INVENTORY, new RepairItemPouchIIIInventoryProvider());
         }
     }
 

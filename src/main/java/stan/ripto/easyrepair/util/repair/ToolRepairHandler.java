@@ -2,6 +2,7 @@ package stan.ripto.easyrepair.util.repair;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
@@ -15,29 +16,33 @@ import java.util.*;
 
 public class ToolRepairHandler {
     public static void tryRepair(Player player, Level level, ToolStack tool) {
-        List<ItemStack> pouch = RepairHelper.findPouch(player);
-        if (pouch.isEmpty()) return;
+        List<ItemStack> pouches = RepairHelper.findPouches(player);
+        if (pouches.isEmpty()) return;
 
-        List<ItemStack> rItems = new ArrayList<>();
-        for (ItemStack stack : pouch) {
-            IItemHandler handler = EasyRepairUtils.getPouchHandler(stack);
-            rItems.addAll(RepairHelper.getRepairItems(handler));
+        List<ItemStack> repairItems = new ArrayList<>();
+        for (ItemStack pouch : pouches) {
+            IItemHandler handler = EasyRepairUtils.getPouchHandler(pouch);
+            repairItems.addAll(RepairHelper.getRepairItems(handler));
         }
 
-        if (rItems.isEmpty()) {
+        if (repairItems.isEmpty()) {
             player.sendSystemMessage(Component.translatable(TranslateKeys.POUCH_EMPTY_MESSAGE));
             return;
         }
 
-        List<RepairItemData> repairItemData = RepairHelper.getRepairItemData(rItems, level, tool);
+        List<RepairItemData> repairItemData = RepairHelper.getRepairItemData(repairItems, level, tool);
         if (repairItemData.isEmpty()) {
             player.sendSystemMessage(Component.translatable(TranslateKeys.POUCH_EMPTY_MESSAGE));
             return;
         }
 
+        ItemStack stackCopy = ItemStack.EMPTY;
         for (RepairItemData data : repairItemData) {
+            stackCopy = data.getRepairItemStack().copy();
             data.repair();
         }
+
+        final Item repairItem = stackCopy.getItem();
 
         SoundUtils.playSoundForAll(
                 player,
@@ -45,5 +50,9 @@ public class ToolRepairHandler {
                 0.8f,
                 0.8f + 0.4f * player.getRandom().nextFloat()
         );
+
+        if (repairItems.stream().noneMatch(stack -> stack.is(repairItem))) {
+            player.sendSystemMessage(Component.translatable(TranslateKeys.REPAIR_MATERIAL_EMPTY_MESSAGE));
+        }
     }
 }

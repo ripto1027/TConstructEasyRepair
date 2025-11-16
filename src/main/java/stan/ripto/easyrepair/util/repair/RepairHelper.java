@@ -1,6 +1,5 @@
 package stan.ripto.easyrepair.util.repair;
 
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -15,35 +14,36 @@ import slimeknights.tconstruct.library.tools.part.IRepairKitItem;
 import stan.ripto.easyrepair.item.EasyRepairItems;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 public class RepairHelper {
-    public static List<ItemStack> findPouch(Player player) {
-        List<ItemStack> stacks = new ArrayList<>();
+    private static final String CURIOS_MOD_ID = "curios";
 
-        if (ModList.get().isLoaded(CuriosApi.MODID)) {
-            ICuriosItemHandler handler = CuriosApi.getCuriosInventory(player).orElseThrow(() -> new IllegalStateException("Pouch not found."));
-            List<SlotResult> results = handler.findCurios("pouch");
-            for (SlotResult result : results) {
-                ItemStack stack = result.stack();
-                if (isPouch(stack)) {
-                    stacks.add(stack);
+    public static List<ItemStack> findPouches(Player player) {
+        List<ItemStack> pouches = new ArrayList<>();
+
+        if (ModList.get().isLoaded(CURIOS_MOD_ID)) {
+            List<ItemStack> pouchSlotItems = CuriosApi.getCuriosInventory(player).map(inv -> inv.findCurios("pouch")).orElse(Collections.emptyList()).stream().map(SlotResult::stack).toList();
+            if (!pouchSlotItems.isEmpty()) {
+                for (ItemStack pouchSlotItem : pouchSlotItems) {
+                    if (isPouch(pouchSlotItem)) {
+                        pouches.add(pouchSlotItem);
+                    }
                 }
             }
         }
 
-        NonNullList<ItemStack> items = player.getInventory().items;
-        for (ItemStack item : items) {
-            if (isPouch(item)) {
-                stacks.add(item);
+        for (ItemStack invItem : player.getInventory().items) {
+            if (isPouch(invItem)) {
+                pouches.add(invItem);
             }
         }
 
-        return stacks;
+        return pouches;
     }
 
     private static boolean isPouch(ItemStack stack) {
@@ -64,7 +64,6 @@ public class RepairHelper {
         List<RepairItemData> repairItemData = new ArrayList<>();
         int repairAmount = tool.getDamage();
         for (ItemStack stack : stacks) {
-
             if (stack.getItem() instanceof IRepairKitItem kit) {
                 MaterialId id = kit.getMaterial(stack).getId();
 

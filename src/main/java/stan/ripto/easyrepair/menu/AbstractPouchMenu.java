@@ -10,12 +10,18 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import stan.ripto.easyrepair.event.RepairItemHandler;
 import stan.ripto.easyrepair.util.EasyRepairUtils;
 import stan.ripto.easyrepair.util.PouchTier;
-import stan.ripto.easyrepair.util.repair.RepairHelper;
 
 public abstract class AbstractPouchMenu extends AbstractContainerMenu {
+    private static final int SLOT_COLUMN_COUNT = 9;
+    private static final int PLAYER_INV_ROW_COUNT = 3;
+    private static final int SLOT_LENGTH = 18;
+    private static final int INVENTORY_X_BASE = 8;
+    private static final int POUCH_SLOTS_Y_BASE = 16;
+    private static final int PLAYER_INV_Y_BASE = 30;
+    private static final int HOTBAR_Y_BASE = 88;
+
     protected final ItemStack pouch;
     protected final PouchTier tier;
     protected final int playerInvMoveInt;
@@ -30,7 +36,7 @@ public abstract class AbstractPouchMenu extends AbstractContainerMenu {
         super(menuType, containerId);
         this.pouch = pouch;
         this.tier = tier;
-        this.playerInvMoveInt = this.tier.getRows() * 18;
+        this.playerInvMoveInt = this.tier.getRows() * SLOT_LENGTH;
 
         this.setupPouchSlots();
         this.addPlayerInventory(playerInventory);
@@ -38,17 +44,17 @@ public abstract class AbstractPouchMenu extends AbstractContainerMenu {
 
     private void setupPouchSlots() {
         IItemHandler pouchInventory = EasyRepairUtils.getPouchHandler(this.pouch);
-        for (int i = 0; i < this.tier.getRows(); i++) {
-            for (int j = 0; j < 9; j++) {
+        for (int r = 0; r < this.tier.getRows(); ++r) {
+            for (int c = 0; c < SLOT_COLUMN_COUNT; ++c) {
                 this.addSlot(new SlotItemHandler(
                         pouchInventory,
-                        j + i * 9,
-                        8 + j * 18,
-                        16 + i * 18
+                        c + r * SLOT_COLUMN_COUNT,
+                        INVENTORY_X_BASE + c * SLOT_LENGTH,
+                        POUCH_SLOTS_Y_BASE + r * SLOT_LENGTH
                 ) {
                     @Override
                     public boolean mayPlace(@NotNull ItemStack stack) {
-                        return RepairItemHandler.isRepairItem(stack.getItem());
+                        return EasyRepairUtils.isRepairMaterial(stack.getItem());
                     }
                 });
             }
@@ -56,19 +62,24 @@ public abstract class AbstractPouchMenu extends AbstractContainerMenu {
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
-        for(int l = 0; l < 3; ++l) {
-            for(int k = 0; k < 9; ++k) {
+        for(int r = 0; r < PLAYER_INV_ROW_COUNT; ++r) {
+            for(int c = 0; c < SLOT_COLUMN_COUNT; ++c) {
                 this.addSlot(new Slot(
                         playerInventory,
-                        k + (l + 1) * 9,
-                        8 + k * 18,
-                        30 + this.playerInvMoveInt + l * 18
+                        c + (r + 1) * SLOT_COLUMN_COUNT,
+                        INVENTORY_X_BASE + c * SLOT_LENGTH,
+                        PLAYER_INV_Y_BASE + this.playerInvMoveInt + r * SLOT_LENGTH
                 ));
             }
         }
 
-        for(int i1 = 0; i1 < 9; ++i1) {
-            this.addSlot(new Slot(playerInventory, i1, 8 + i1 * 18, 88 + this.playerInvMoveInt));
+        for(int c = 0; c < SLOT_COLUMN_COUNT; ++c) {
+            this.addSlot(new Slot(
+                    playerInventory,
+                    c,
+                    INVENTORY_X_BASE + c * SLOT_LENGTH,
+                    HOTBAR_Y_BASE + this.playerInvMoveInt
+            ));
         }
     }
 
@@ -98,9 +109,8 @@ public abstract class AbstractPouchMenu extends AbstractContainerMenu {
         return stack;
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public boolean stillValid(Player player) {
-        return !RepairHelper.findPouch(player).isEmpty();
+        return player.getInventory().contains(this.pouch);
     }
 }

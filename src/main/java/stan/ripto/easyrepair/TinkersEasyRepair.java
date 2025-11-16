@@ -5,7 +5,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import stan.ripto.easyrepair.event.EasyRepairModEvents;
-import stan.ripto.easyrepair.event.RepairItemHandler;
+import stan.ripto.easyrepair.event.EasyRepairServerStarting;
 import stan.ripto.easyrepair.item.EasyRepairItems;
 import stan.ripto.easyrepair.menu.EasyRepairMenus;
 import stan.ripto.easyrepair.tab.EasyRepairTabs;
@@ -26,6 +26,6 @@ public class TinkersEasyRepair {
         modBus.addListener(EasyRepairModEvents::onRegisterKeyMapping);
         modBus.addListener(EasyRepairModEvents::onCommonSetup);
 
-        MinecraftForge.EVENT_BUS.addListener(RepairItemHandler::onServerStarting);
+        MinecraftForge.EVENT_BUS.addListener(EasyRepairServerStarting::onServerStarting);
     }
 }

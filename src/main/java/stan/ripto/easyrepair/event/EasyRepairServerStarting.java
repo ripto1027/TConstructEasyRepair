@@ -6,13 +6,12 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import slimeknights.tconstruct.library.recipe.TinkerRecipeTypes;
 import slimeknights.tconstruct.library.recipe.material.MaterialRecipe;
-import slimeknights.tconstruct.library.tools.part.IRepairKitItem;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class RepairItemHandler {
+public class EasyRepairServerStarting {
     private static final Set<Item> REPAIR_ITEMS = new HashSet<>();
 
     public static void onServerStarting(ServerStartingEvent event) {
@@ -27,7 +26,7 @@ public class RepairItemHandler {
         }
     }
 
-    public static boolean isRepairItem(Item item) {
-        return REPAIR_ITEMS.contains(item) || item instanceof IRepairKitItem;
+    public static Set<Item> getRepairItems() {
+        return REPAIR_ITEMS;
     }
 }

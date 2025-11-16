@@ -5,5 +5,6 @@
   "item.easyrepair.repair_item_pouch_iii": "Repair Item Pouch III",
   "key.easyrepair.category": "Tinkers' Easy Repair",
   "key.easyrepair.inventory_open.description": "Open the inventory of the pouch",
-  "message.easyrepair.pouch_empty": "Repair failed. Please check that it contains the correct repair material for the tool you're using."
+  "message.easyrepair.pouch_empty": "Repair failed. Please check that it contains the correct repair material for the tool you're using.",
+  "message.easyrepair.repair_material_empty": "The repair material for the tool you're using has been used up. Please check your pouches."
 }

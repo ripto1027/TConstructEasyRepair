@@ -2,9 +2,7 @@ package stan.ripto.easyrepair.network;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkEvent;
 import stan.ripto.easyrepair.item.AbstractPouchItem;
@@ -29,16 +27,11 @@ public class PouchInventoryOpenPacket {
 
             Level level = player.level();
 
-            List<ItemStack> pouches = RepairHelper.findPouch(player);
+            List<ItemStack> pouches = RepairHelper.findPouches(player);
             if (pouches.isEmpty()) return;
 
             ItemStack pouchStack = pouches.get(0);
-            if (pouchStack == null || pouchStack.isEmpty()) return;
-
-            Item pouchItem = pouchStack.getItem();
-            if (pouchItem.equals(Items.AIR)) return;
-
-            if (pouchItem instanceof AbstractPouchItem<?> pouch) {
+            if (pouchStack.getItem() instanceof AbstractPouchItem<?> pouch) {
                 pouch.openMenu(level, player, pouchStack);
             }
         });
