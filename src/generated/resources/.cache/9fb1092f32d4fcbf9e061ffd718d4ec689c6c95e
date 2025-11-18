@@ -1,7 +1,3 @@
-// 1.20.1	2025-11-12T22:20:50.3254724	Recipes
-444d34855b6c410d412a742a44ecd71571336832 data/easyrepair/advancements/recipes/tools/repair_item_pouch_i.json
-ae6f620b7aaee1a49bd7cb47a450c0deb2b6ea97 data/easyrepair/advancements/recipes/tools/repair_item_pouch_ii.json
-f426c8069251744f4e9b2f4a30322d0fd537da54 data/easyrepair/advancements/recipes/tools/repair_item_pouch_iii.json
-1afa660c0f4a8ad4a60be8bec3fa4a9f5840696b data/easyrepair/recipes/repair_item_pouch_i.json
-ba967f4b88a396d2ecc8eca4d8f95b33d42158d5 data/easyrepair/recipes/repair_item_pouch_ii.json
-a92c3de8ca617a2ad47eb28ecae954bd7cee4271 data/easyrepair/recipes/repair_item_pouch_iii.json
+// 1.20.1	2025-11-18T21:22:16.0130825	Recipes
+444d34855b6c410d412a742a44ecd71571336832 data/easyrepair/advancements/recipes/misc/repair_item_pouch_i.json
+e65553c20f8d329b58faf52e93e6dba8c8f876b7 data/easyrepair/recipes/repair_item_pouch_i.json

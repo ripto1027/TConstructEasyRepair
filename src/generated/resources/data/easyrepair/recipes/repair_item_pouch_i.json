@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "group": "easyrepair_I",
+  "category": "misc",
+  "group": "repair_item_pouch_i",
   "key": {
     "A": {
       "item": "minecraft:leather"
@@ -11,9 +11,9 @@
     }
   },
   "pattern": [
-    " A ",
     "ABA",
-    " A "
+    "B B",
+    "ABA"
   ],
   "result": {
     "item": "easyrepair:repair_item_pouch_i"

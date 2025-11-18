@@ -8,6 +8,7 @@ import stan.ripto.easyrepair.event.EasyRepairModEvents;
 import stan.ripto.easyrepair.event.EasyRepairServerStarting;
 import stan.ripto.easyrepair.item.EasyRepairItems;
 import stan.ripto.easyrepair.menu.EasyRepairMenus;
+import stan.ripto.easyrepair.recipe.EasyRepairRecipeSerializers;
 import stan.ripto.easyrepair.tab.EasyRepairTabs;
 
 @Mod(TinkersEasyRepair.MOD_ID)
@@ -20,6 +21,7 @@ public class TinkersEasyRepair {
         EasyRepairItems.register(modBus);
         EasyRepairMenus.register(modBus);
         EasyRepairTabs.register(modBus);
+        EasyRepairRecipeSerializers.register(modBus);
 
         modBus.addListener(EasyRepairModEvents::onClientSetup);
         modBus.addListener(EasyRepairModEvents::onBuildCreativeModeTabContents);
