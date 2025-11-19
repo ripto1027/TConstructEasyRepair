@@ -25,9 +25,7 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
 
     private final ResourceLocation id;
     private final ItemStack result;
-    private final Ingredient center;
-    private final Ingredient around;
-    private NonNullList<Ingredient> ingredients = null;
+    private final NonNullList<Ingredient> ingredients;
 
     private final String group;
 
@@ -39,43 +37,39 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
     public PouchUpgradeRecipe(ResourceLocation id) {
         this.id = id;
 
+        Ingredient center;
+        Ingredient around;
         switch (id.getPath()) {
             case II -> {
                 this.result = new ItemStack(EasyRepairItems.REPAIR_ITEM_POUCH_II.get());
                 this.group = II;
-                this.center = Ingredient.of(EasyRepairItems.REPAIR_ITEM_POUCH_I.get());
-                this.around = Ingredient.of(Items.GOLD_INGOT);
+                center = Ingredient.of(EasyRepairItems.REPAIR_ITEM_POUCH_I.get());
+                around = Ingredient.of(Items.GOLD_INGOT);
             }
             case III -> {
                 this.result = new ItemStack(EasyRepairItems.REPAIR_ITEM_POUCH_III.get());
                 this.group = III;
-                this.center = Ingredient.of(EasyRepairItems.REPAIR_ITEM_POUCH_II.get());
-                this.around = Ingredient.of(Items.DIAMOND);
+                center = Ingredient.of(EasyRepairItems.REPAIR_ITEM_POUCH_II.get());
+                around = Ingredient.of(Items.DIAMOND);
             }
             default -> {
                 this.result = ItemStack.EMPTY;
                 this.group = "";
-                this.center = Ingredient.EMPTY;
-                this.around = Ingredient.EMPTY;
+                center = Ingredient.EMPTY;
+                around = Ingredient.EMPTY;
             }
         }
-    }
 
-    private void setIngredients() {
-        if (this.ingredients == null) {
-            this.ingredients = NonNullList.withSize(CONTAINER_SIZE, Ingredient.EMPTY);
-            this.ingredients.set(1, this.around);
-            this.ingredients.set(3, this.around);
-            this.ingredients.set(4, this.center);
-            this.ingredients.set(5, this.around);
-            this.ingredients.set(7, this.around);
-        }
+        this.ingredients = NonNullList.withSize(CONTAINER_SIZE, Ingredient.EMPTY);
+        this.ingredients.set(1, around);
+        this.ingredients.set(3, around);
+        this.ingredients.set(4, center);
+        this.ingredients.set(5, around);
+        this.ingredients.set(7, around);
     }
 
     @Override
     public boolean matches(CraftingContainer container, Level level) {
-        this.setIngredients();
-
         for (int i = 0; i < CONTAINER_SIZE; ++i) {
             if (!this.ingredients.get(i).test(container.getItem(i))) return false;
         }
@@ -106,7 +100,7 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
 
     @Override
     public ItemStack getResultItem(RegistryAccess access) {
-        return this.result;
+        return this.result.copy();
     }
 
     @Override
@@ -126,7 +120,7 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
 
     @Override
     public CraftingBookCategory category() {
-        return CraftingBookCategory.MISC;
+        return CraftingBookCategory.EQUIPMENT;
     }
 
     @Override
@@ -141,14 +135,12 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        this.setIngredients();
         return this.ingredients;
     }
 
     @Override
     public boolean isIncomplete() {
-        NonNullList<Ingredient> items = this.getIngredients();
-        return items.isEmpty() || items.stream().filter(ing -> !ing.isEmpty()).anyMatch(ForgeHooks::hasNoElements);
+        return this.ingredients.stream().filter(i -> !i.isEmpty()).anyMatch(ForgeHooks::hasNoElements);
     }
 
     @SuppressWarnings("NullableProblems")

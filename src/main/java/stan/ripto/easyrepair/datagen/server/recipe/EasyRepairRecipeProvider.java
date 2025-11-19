@@ -18,7 +18,7 @@ public class EasyRepairRecipeProvider extends RecipeProvider {
     @SuppressWarnings("NullableProblems")
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EasyRepairItems.REPAIR_ITEM_POUCH_I.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, EasyRepairItems.REPAIR_ITEM_POUCH_I.get())
                 .define('A', Items.LEATHER)
                 .define('B', Items.IRON_INGOT)
                 .pattern("ABA")

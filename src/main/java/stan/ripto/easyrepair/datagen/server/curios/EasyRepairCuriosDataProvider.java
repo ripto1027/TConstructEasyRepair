@@ -17,6 +17,6 @@ public class EasyRepairCuriosDataProvider extends CuriosDataProvider {
     @Override
     public void generate(HolderLookup.Provider provider, ExistingFileHelper existingFileHelper) {
         this.createSlot("pouch").icon(ResourceLocation.parse("easyrepair:slot/repair_item_pouch_slot"));
-        this.createEntities("entities").addPlayer().addSlots("pouch");
+        this.createEntities("player").addPlayer().addSlots("pouch");
     }
 }

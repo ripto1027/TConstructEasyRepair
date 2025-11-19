@@ -23,10 +23,10 @@ public class TinkersEasyRepair {
         EasyRepairTabs.register(modBus);
         EasyRepairRecipeSerializers.register(modBus);
 
-        modBus.addListener(EasyRepairModEvents::onClientSetup);
-        modBus.addListener(EasyRepairModEvents::onBuildCreativeModeTabContents);
-        modBus.addListener(EasyRepairModEvents::onRegisterKeyMapping);
-        modBus.addListener(EasyRepairModEvents::onCommonSetup);
+//        modBus.addListener(EasyRepairModEvents::onClientSetup);
+//        modBus.addListener(EasyRepairModEvents::onBuildCreativeModeTabContents);
+//        modBus.addListener(EasyRepairModEvents::onRegisterKeyMapping);
+//        modBus.addListener(EasyRepairModEvents::onCommonSetup);
 
         MinecraftForge.EVENT_BUS.addListener(EasyRepairServerStarting::onServerStarting);
     }
