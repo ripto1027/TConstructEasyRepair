@@ -3,13 +3,10 @@ package stan.ripto.easyrepair.event;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
@@ -30,15 +27,13 @@ public class EasyRepairForgeEvents {
             ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory");
 
     @SubscribeEvent
-    public static void onPlayerDestroyItem(PlayerDestroyItemEvent event) {
-        Player player = event.getEntity();
-        Level level = player.level();
+    public static void onBroadcastBreak(BroadcastBreakEvent event) {
+        Level level = event.getLevel();
         if (!level.isClientSide()) {
-            InteractionHand hand = event.getHand();
-            ItemStack stack = hand == null ? player.getMainHandItem() : player.getItemInHand(hand);
+            ItemStack stack = event.getStack();
             if (ToolDamageUtil.isBroken(stack)) {
                 ToolStack tool = ToolStack.from(stack);
-                ToolRepairHandler.tryRepair(player, level, tool);
+                ToolRepairHandler.tryRepair(event.getPlayer(), level, tool);
             }
         }
     }

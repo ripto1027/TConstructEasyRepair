@@ -11,10 +11,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class EasyRepairServerStarting {
+public class EasyRepairServerStartingEvent {
     private static final Set<Item> REPAIR_ITEMS = new HashSet<>();
 
     public static void onServerStarting(ServerStartingEvent event) {
+        REPAIR_ITEMS.clear();
         RecipeManager manager = event.getServer().getRecipeManager();
         List<MaterialRecipe> materialRecipes = manager.getAllRecipesFor(TinkerRecipeTypes.MATERIAL.get());
 

@@ -5,7 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import slimeknights.tconstruct.library.tools.part.IRepairKitItem;
-import stan.ripto.easyrepair.event.EasyRepairServerStarting;
+import stan.ripto.easyrepair.event.EasyRepairServerStartingEvent;
 
 public class EasyRepairUtils {
     public static IItemHandler getPouchHandler(ItemStack pouch) {
@@ -14,6 +14,6 @@ public class EasyRepairUtils {
     }
 
     public static boolean isRepairMaterial(Item item) {
-        return EasyRepairServerStarting.getRepairItems().contains(item) || item instanceof IRepairKitItem;
+        return EasyRepairServerStartingEvent.getRepairItems().contains(item) || item instanceof IRepairKitItem;
     }
 }
