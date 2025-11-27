@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import stan.ripto.easyrepair.util.EasyRepairUtils;
 import stan.ripto.easyrepair.util.PouchTier;
 
+@SuppressWarnings("NullableProblems")
 public abstract class AbstractPouchMenu extends AbstractContainerMenu {
     private static final int SLOT_COLUMN_COUNT = 9;
     private static final int PLAYER_INV_ROW_COUNT = 3;
@@ -83,7 +84,6 @@ public abstract class AbstractPouchMenu extends AbstractContainerMenu {
         }
     }
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
         ItemStack stack = ItemStack.EMPTY;
@@ -111,6 +111,6 @@ public abstract class AbstractPouchMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return player.getInventory().contains(this.pouch);
+        return true;
     }
 }

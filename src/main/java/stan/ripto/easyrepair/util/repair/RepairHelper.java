@@ -79,7 +79,7 @@ public class RepairHelper {
             } else {
                 Optional<MaterialRecipe> recipes =
                         level.getRecipeManager().getRecipeFor(TinkerRecipeTypes.MATERIAL.get(), () -> stack, level);
-                if (recipes.isEmpty()) break;
+                if (recipes.isEmpty()) continue;
 
                 MaterialRecipe recipe = recipes.get();
                 MaterialId id = recipe.getMaterial().getId();

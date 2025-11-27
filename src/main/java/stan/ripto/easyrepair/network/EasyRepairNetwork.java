@@ -13,8 +13,10 @@ public class EasyRepairNetwork {
     );
 
     public static void register() {
+        int id = -1;
+
         CHANNEL.registerMessage(
-                0,
+                ++id,
                 PouchInventoryOpenPacket.class,
                 PouchInventoryOpenPacket::encode,
                 PouchInventoryOpenPacket::decode,
