@@ -4,17 +4,15 @@ import net.minecraft.resources.ResourceLocation;
 import stan.ripto.easyrepair.TinkersEasyRepair;
 
 public enum PouchTier {
-    I(9, ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "textures/gui/repair_item_pouch_i_gui.png"), "repair_item_pouch_i"),
-    II(18, ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "textures/gui/repair_item_pouch_ii_gui.png"), "repair_item_pouch_ii"),
-    III(27, ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "textures/gui/repair_item_pouch_iii_gui.png"), "repair_item_pouch_iii");
+    I(9, "repair_item_pouch_i"),
+    II(18, "repair_item_pouch_ii"),
+    III(27, "repair_item_pouch_iii");
 
     private final int size;
-    private final ResourceLocation texture;
     private final String name;
 
-    PouchTier(int size, ResourceLocation texture, String name) {
+    PouchTier(int size, String name) {
         this.size = size;
-        this.texture = texture;
         this.name = name;
     }
 
@@ -27,7 +25,7 @@ public enum PouchTier {
     }
 
     public ResourceLocation getTexture() {
-        return this.texture;
+        return ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "textures/gui/" + this.name + ".png");
     }
 
     public String getName() {
