@@ -7,27 +7,20 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.crafting.IShapedRecipe;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.Nullable;
-import stan.ripto.easyrepair.item.EasyRepairItems;
-import stan.ripto.easyrepair.util.EasyRepairUtils;
+import stan.ripto.easyrepair.util.PouchTier;
 
 @SuppressWarnings("NullableProblems")
 public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<CraftingContainer> {
-    private static final String II = "repair_item_pouch_ii";
-    private static final String III = "repair_item_pouch_iii";
-
     private final ResourceLocation id;
     private final ItemStack result;
     private final NonNullList<Ingredient> ingredients;
-
-    private final String group;
 
     private static final int WIDTH = 3;
     private static final int HEIGHT = 3;
@@ -37,28 +30,10 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
     public PouchUpgradeRecipe(ResourceLocation id) {
         this.id = id;
 
-        Ingredient center;
-        Ingredient around;
-        switch (id.getPath()) {
-            case II -> {
-                this.result = new ItemStack(EasyRepairItems.REPAIR_ITEM_POUCH_II.get());
-                this.group = II;
-                center = Ingredient.of(EasyRepairItems.REPAIR_ITEM_POUCH_I.get());
-                around = Ingredient.of(Items.GOLD_INGOT);
-            }
-            case III -> {
-                this.result = new ItemStack(EasyRepairItems.REPAIR_ITEM_POUCH_III.get());
-                this.group = III;
-                center = Ingredient.of(EasyRepairItems.REPAIR_ITEM_POUCH_II.get());
-                around = Ingredient.of(Items.DIAMOND);
-            }
-            default -> {
-                this.result = ItemStack.EMPTY;
-                this.group = "";
-                center = Ingredient.EMPTY;
-                around = Ingredient.EMPTY;
-            }
-        }
+        PouchTier tier = PouchTier.get(id.getPath());
+        this.result = new ItemStack(tier.getPouch());
+        Ingredient center = tier.getCenterIngredient();
+        Ingredient around = tier.getAroundIngredient();
 
         this.ingredients = NonNullList.withSize(CONTAINER_SIZE, Ingredient.EMPTY);
         this.ingredients.set(1, around);
@@ -80,15 +55,15 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
     @Override
     public ItemStack assemble(CraftingContainer container, RegistryAccess access) {
         ItemStack resultCopy = this.result.copy();
-        IItemHandler centerInv = EasyRepairUtils.getPouchHandler(container.getItem(4));
-        IItemHandler resultInv = EasyRepairUtils.getPouchHandler(resultCopy);
 
-        for (int i = 0; i < centerInv.getSlots(); i++) {
-            ItemStack stack = centerInv.getStackInSlot(i);
-            if (!stack.isEmpty()) {
-                ItemHandlerHelper.insertItem(resultInv, stack, false);
+        container.getItem(4).getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(pouchInv -> resultCopy.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(resultInv -> {
+            for (int i = 0; i < pouchInv.getSlots(); i++) {
+                ItemStack invStack = pouchInv.getStackInSlot(i);
+                if (!invStack.isEmpty()) {
+                    ItemHandlerHelper.insertItem(resultInv, invStack, false);
+                }
             }
-        }
+        }));
 
         return resultCopy;
     }
@@ -115,7 +90,7 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
 
     @Override
     public String getGroup() {
-        return this.group;
+        return this.id.getPath();
     }
 
     @Override
@@ -140,10 +115,10 @@ public class PouchUpgradeRecipe implements CraftingRecipe, IShapedRecipe<Craftin
 
     @Override
     public boolean isIncomplete() {
-        return this.ingredients.stream().filter(i -> !i.isEmpty()).anyMatch(ForgeHooks::hasNoElements);
+        return this.ingredients.stream()
+                .filter(ingredient -> !ingredient.isEmpty()).anyMatch(ForgeHooks::hasNoElements);
     }
 
-    @SuppressWarnings("NullableProblems")
     public static class Serializer implements RecipeSerializer<PouchUpgradeRecipe> {
         @Override
         public PouchUpgradeRecipe fromJson(ResourceLocation id, JsonObject json) {

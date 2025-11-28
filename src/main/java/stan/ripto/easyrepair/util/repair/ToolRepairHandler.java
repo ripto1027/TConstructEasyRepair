@@ -1,10 +1,10 @@
 package stan.ripto.easyrepair.util.repair;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import slimeknights.tconstruct.common.SoundUtils;
 import slimeknights.tconstruct.common.Sounds;
@@ -14,11 +14,11 @@ import stan.ripto.easyrepair.datagen.client.lang.TranslateKeys;
 import java.util.*;
 
 public class ToolRepairHandler {
-    public static void tryRepair(ServerPlayer player, ServerLevel level, ToolStack tool) {
+    public static void tryRepair(Player player, Level level, ToolStack tool) {
         List<ItemStack> pouches = RepairHelper.findPouches(player);
         if (pouches.isEmpty()) return;
 
-        List<ItemStack> repairItems = new ArrayList<>();
+        final List<ItemStack> repairItems = new ArrayList<>();
         for (ItemStack pouch : pouches) {
             pouch.getCapability(ForgeCapabilities.ITEM_HANDLER)
                     .ifPresent(inv -> repairItems.addAll(RepairHelper.getRepairItems(inv)));
