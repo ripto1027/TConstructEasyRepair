@@ -17,7 +17,7 @@ public class RepairItemData {
         this.repairItemStack = repairItemStack;
         this.tool = tool;
         this.repairPerItem = getRepairPerItem(tool, repairPerItem);
-        int needed = (int) Math.ceil(currentDamage / this.repairPerItem);
+        int needed = this.repairPerItem == 0.0F ? 0 : (int) Math.ceil(currentDamage / this.repairPerItem);
         int stackCount = repairItemStack.getCount();
 
         if (needed > stackCount) {
@@ -36,6 +36,7 @@ public class RepairItemData {
     public static float getRepairPerItem(ToolStack tool, float repairPerItem) {
         for (ModifierEntry entry : tool.getModifierList()) {
             repairPerItem = entry.getHook(ModifierHooks.REPAIR_FACTOR).getRepairFactor(tool, entry, repairPerItem);
+            if (repairPerItem <= 0.0F) return 0.0F;
         }
         return repairPerItem;
     }

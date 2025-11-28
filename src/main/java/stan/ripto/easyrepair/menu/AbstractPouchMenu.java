@@ -6,7 +6,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -44,22 +44,18 @@ public abstract class AbstractPouchMenu extends AbstractContainerMenu {
     }
 
     private void setupPouchSlots() {
-        IItemHandler pouchInventory = EasyRepairUtils.getPouchHandler(this.pouch);
-        for (int r = 0; r < this.tier.getRows(); ++r) {
-            for (int c = 0; c < SLOT_COLUMN_COUNT; ++c) {
-                this.addSlot(new SlotItemHandler(
-                        pouchInventory,
-                        c + r * SLOT_COLUMN_COUNT,
-                        INVENTORY_X_BASE + c * SLOT_LENGTH,
-                        POUCH_SLOTS_Y_BASE + r * SLOT_LENGTH
-                ) {
-                    @Override
-                    public boolean mayPlace(@NotNull ItemStack stack) {
-                        return EasyRepairUtils.isRepairMaterial(stack.getItem());
-                    }
-                });
+        this.pouch.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
+            for (int r = 0; r < this.tier.getRows(); ++r) {
+                for (int c = 0; c < SLOT_COLUMN_COUNT; ++c) {
+                    this.addSlot(new SlotItemHandler(inv, c + r * SLOT_COLUMN_COUNT, INVENTORY_X_BASE + c * SLOT_LENGTH, POUCH_SLOTS_Y_BASE + r * SLOT_LENGTH) {
+                        @Override
+                        public boolean mayPlace(@NotNull ItemStack stack) {
+                            return EasyRepairUtils.isRepairMaterial(stack.getItem());
+                        }
+                    });
+                }
             }
-        }
+        });
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

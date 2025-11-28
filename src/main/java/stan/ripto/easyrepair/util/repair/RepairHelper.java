@@ -16,7 +16,6 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,21 +26,11 @@ public class RepairHelper {
         List<ItemStack> pouches = new ArrayList<>();
 
         if (ModList.get().isLoaded(CURIOS_MOD_ID)) {
-            List<ItemStack> pouchSlotItems = CuriosApi.getCuriosInventory(player).map(inv -> inv.findCurios("pouch")).orElse(Collections.emptyList()).stream().map(SlotResult::stack).toList();
-            if (!pouchSlotItems.isEmpty()) {
-                for (ItemStack pouchSlotItem : pouchSlotItems) {
-                    if (isPouch(pouchSlotItem)) {
-                        pouches.add(pouchSlotItem);
-                    }
-                }
-            }
+            CuriosApi.getCuriosInventory(player).ifPresent(curioInv ->
+                    pouches.addAll(curioInv.findCurios("pouch").stream().map(SlotResult::stack).toList()));
         }
 
-        for (ItemStack invItem : player.getInventory().items) {
-            if (isPouch(invItem)) {
-                pouches.add(invItem);
-            }
-        }
+        pouches.addAll(player.getInventory().items.stream().filter(RepairHelper::isPouch).toList());
 
         return pouches;
     }
