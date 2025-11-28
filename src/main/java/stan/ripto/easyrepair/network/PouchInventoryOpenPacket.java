@@ -35,5 +35,6 @@ public class PouchInventoryOpenPacket {
                 pouch.openMenu(level, player, pouchStack);
             }
         });
+        context.get().setPacketHandled(true);
     }
 }
