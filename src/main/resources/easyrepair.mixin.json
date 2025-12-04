@@ -4,7 +4,7 @@
   "package": "stan.ripto.easyrepair.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EasyRepairMixin"
+    "ToolStackMixin"
   ],
   "client": [],
   "server": []
