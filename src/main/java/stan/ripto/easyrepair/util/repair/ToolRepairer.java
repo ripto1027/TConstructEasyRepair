@@ -1,7 +1,10 @@
 package stan.ripto.easyrepair.util.repair;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -10,13 +13,23 @@ import slimeknights.tconstruct.common.SoundUtils;
 import slimeknights.tconstruct.common.Sounds;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import stan.ripto.easyrepair.datagen.client.lang.TranslateKeys;
+import stan.ripto.easyrepair.util.ServerPlayerGetter;
 
 import java.util.*;
 
-public class ToolRepairHandler {
-    public static void tryRepair(Player player, Level level, ToolStack tool) {
+public class ToolRepairer {
+    public static boolean tryRepair(ToolStack tool) {
+        LocalPlayer localPlayer = Minecraft.getInstance().player;
+        if (localPlayer == null) return false;
+
+        ServerPlayer player = ServerPlayerGetter.getPlayer(localPlayer.getUUID());
+        if (player == null) return false;
+
+        Level lvl = player.level();
+        if (!(lvl instanceof ServerLevel level)) return false;
+
         List<ItemStack> pouches = RepairHelper.findPouches(player);
-        if (pouches.isEmpty()) return;
+        if (pouches.isEmpty()) return false;
 
         final List<ItemStack> repairItems = new ArrayList<>();
         for (ItemStack pouch : pouches) {
@@ -26,13 +39,13 @@ public class ToolRepairHandler {
 
         if (repairItems.isEmpty()) {
             player.sendSystemMessage(Component.translatable(TranslateKeys.POUCH_EMPTY_MESSAGE));
-            return;
+            return false;
         }
 
         List<RepairItemData> repairItemData = RepairHelper.getRepairItemData(repairItems, level, tool);
         if (repairItemData.isEmpty()) {
             player.sendSystemMessage(Component.translatable(TranslateKeys.POUCH_EMPTY_MESSAGE));
-            return;
+            return false;
         }
 
         ItemStack stackCopy = ItemStack.EMPTY;
@@ -53,5 +66,7 @@ public class ToolRepairHandler {
         if (repairItems.stream().noneMatch(stack -> stack.is(repairItem))) {
             player.sendSystemMessage(Component.translatable(TranslateKeys.REPAIR_MATERIAL_EMPTY_MESSAGE));
         }
+
+        return true;
     }
 }

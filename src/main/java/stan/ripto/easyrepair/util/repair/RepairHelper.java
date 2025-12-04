@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.recipe.material.MaterialRecipe;
 import slimeknights.tconstruct.library.tools.definition.module.material.MaterialRepairToolHook;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.tools.part.IRepairKitItem;
-import stan.ripto.easyrepair.item.EasyRepairItems;
+import stan.ripto.easyrepair.item.AbstractPouchItem;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
@@ -26,17 +26,24 @@ public class RepairHelper {
         List<ItemStack> pouches = new ArrayList<>();
 
         if (ModList.get().isLoaded(CURIOS_MOD_ID)) {
-            CuriosApi.getCuriosInventory(player).ifPresent(curioInv ->
-                    pouches.addAll(curioInv.findCurios("pouch").stream().map(SlotResult::stack).toList()));
+            CuriosApi.getCuriosInventory(player).ifPresent(curioInv -> {
+                        for (SlotResult slot : curioInv.findCurios("pouch")) {
+                            ItemStack stack = slot.stack();
+                            if (isPouch(stack)) pouches.add(stack);
+                        }
+                    }
+            );
         }
 
-        pouches.addAll(player.getInventory().items.stream().filter(RepairHelper::isPouch).toList());
+        for (ItemStack stack : player.getInventory().items) {
+            if (isPouch(stack)) pouches.add(stack);
+        }
 
         return pouches;
     }
 
     private static boolean isPouch(ItemStack stack) {
-        return !stack.isEmpty() && (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_I.get()) || stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_II.get()) || stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_III.get()));
+        return !stack.isEmpty() && stack.getItem() instanceof AbstractPouchItem<?>;
     }
 
     public static List<ItemStack> getRepairItems(IItemHandler handler) {
