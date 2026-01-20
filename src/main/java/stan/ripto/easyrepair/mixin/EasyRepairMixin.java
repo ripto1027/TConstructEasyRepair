@@ -1,8 +1,8 @@
 package stan.ripto.easyrepair.mixin;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,8 +22,8 @@ public abstract class EasyRepairMixin {
             at = @At("TAIL")
     )
     private void callBroadcastBreak(EquipmentSlot slot, CallbackInfo ci) {
-        if ((LivingEntity)(Object) this instanceof Player player) {
-            MinecraftForge.EVENT_BUS.post(new BroadcastBreakEvent(player, player.level(), this.getItemBySlot(slot)));
+        if ((LivingEntity)(Object) this instanceof ServerPlayer player) {
+            MinecraftForge.EVENT_BUS.post(new BroadcastBreakEvent(player, player.serverLevel(), this.getItemBySlot(slot)));
         }
     }
 }

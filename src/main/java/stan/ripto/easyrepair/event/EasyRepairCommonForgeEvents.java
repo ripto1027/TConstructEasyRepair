@@ -1,12 +1,9 @@
 package stan.ripto.easyrepair.event;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
@@ -16,25 +13,20 @@ import stan.ripto.easyrepair.capability.RepairItemPouchIIIInventoryProvider;
 import stan.ripto.easyrepair.capability.RepairItemPouchIIInventoryProvider;
 import stan.ripto.easyrepair.capability.RepairItemPouchIInventoryProvider;
 import stan.ripto.easyrepair.item.EasyRepairItems;
-import stan.ripto.easyrepair.key.EasyRepairKeyMappings;
-import stan.ripto.easyrepair.network.EasyRepairNetwork;
-import stan.ripto.easyrepair.network.PouchInventoryOpenPacket;
 import stan.ripto.easyrepair.util.repair.ToolRepairHandler;
 
 @Mod.EventBusSubscriber(modid = TinkersEasyRepair.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class EasyRepairForgeEvents {
+public class EasyRepairCommonForgeEvents {
     private static final ResourceLocation INVENTORY =
             ResourceLocation.fromNamespaceAndPath(TinkersEasyRepair.MOD_ID, "inventory");
 
     @SubscribeEvent
     public static void onBroadcastBreak(BroadcastBreakEvent event) {
-        Level level = event.getLevel();
-        if (!level.isClientSide()) {
-            ItemStack stack = event.getStack();
-            if (ToolDamageUtil.isBroken(stack)) {
-                ToolStack tool = ToolStack.from(stack);
-                ToolRepairHandler.tryRepair(event.getPlayer(), level, tool);
-            }
+        ServerLevel level = event.getLevel();
+        ItemStack stack = event.getStack();
+        if (ToolDamageUtil.isBroken(stack)) {
+            ToolStack tool = ToolStack.from(stack);
+            ToolRepairHandler.tryRepair(event.getPlayer(), level, tool);
         }
     }
 
@@ -49,17 +41,6 @@ public class EasyRepairForgeEvents {
 
         } else if (stack.is(EasyRepairItems.REPAIR_ITEM_POUCH_III.get())) {
             event.addCapability(INVENTORY, new RepairItemPouchIIIInventoryProvider());
-        }
-    }
-
-    @SuppressWarnings("InstantiationOfUtilityClass")
-    @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase.equals(TickEvent.Phase.END)) {
-            while (EasyRepairKeyMappings.OPEN_POUCH_INVENTORY.consumeClick()) {
-                if (Minecraft.getInstance().screen instanceof InventoryScreen) return;
-                EasyRepairNetwork.CHANNEL.sendToServer(new PouchInventoryOpenPacket());
-            }
         }
     }
 }

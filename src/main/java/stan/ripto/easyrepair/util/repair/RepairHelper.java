@@ -1,8 +1,8 @@
 package stan.ripto.easyrepair.util.repair;
 
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.items.IItemHandler;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
@@ -16,25 +16,24 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 public class RepairHelper {
     private static final String CURIOS_MOD_ID = "curios";
 
-    public static List<ItemStack> findPouches(Player player) {
+    public static List<ItemStack> findPouches(ServerPlayer player) {
         List<ItemStack> pouches = new ArrayList<>();
 
         if (ModList.get().isLoaded(CURIOS_MOD_ID)) {
-            List<ItemStack> pouchSlotItems = CuriosApi.getCuriosInventory(player).map(inv -> inv.findCurios("pouch")).orElse(Collections.emptyList()).stream().map(SlotResult::stack).toList();
-            if (!pouchSlotItems.isEmpty()) {
-                for (ItemStack pouchSlotItem : pouchSlotItems) {
-                    if (isPouch(pouchSlotItem)) {
-                        pouches.add(pouchSlotItem);
+            CuriosApi.getCuriosInventory(player).ifPresent(curioInv -> {
+                for (SlotResult slot : curioInv.findCurios("pouch")) {
+                    ItemStack stack = slot.stack();
+                    if (isPouch(stack)) {
+                        pouches.add(stack);
                     }
                 }
-            }
+            });
         }
 
         for (ItemStack invItem : player.getInventory().items) {
@@ -60,7 +59,7 @@ public class RepairHelper {
         return list;
     }
 
-    public static List<RepairItemData> getRepairItemData(List<ItemStack> stacks, Level level, ToolStack tool) {
+    public static List<RepairItemData> getRepairItemData(List<ItemStack> stacks, ServerLevel level, ToolStack tool) {
         List<RepairItemData> repairItemData = new ArrayList<>();
         int repairAmount = tool.getDamage();
         for (ItemStack stack : stacks) {
