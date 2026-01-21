@@ -20,7 +20,7 @@ public class EasyRepairClientForgeEvents {
     @SuppressWarnings("InstantiationOfUtilityClass")
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase.equals(TickEvent.Phase.END)) {
+        if (event.phase == TickEvent.Phase.END) {
             while (EasyRepairKeyMappings.OPEN_POUCH_INVENTORY.consumeClick()) {
                 if (Minecraft.getInstance().screen instanceof InventoryScreen) return;
                 EasyRepairNetwork.CHANNEL.sendToServer(new PouchInventoryOpenPacket());

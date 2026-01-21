@@ -3,11 +3,9 @@ package stan.ripto.easyrepair.event;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -17,7 +15,6 @@ import stan.ripto.easyrepair.datagen.client.lang.EasyRepairLanguageProvider;
 import stan.ripto.easyrepair.datagen.server.advancement.EasyRepairAdvancementProvider;
 import stan.ripto.easyrepair.datagen.server.curios.EasyRepairCuriosDataProvider;
 import stan.ripto.easyrepair.datagen.server.recipe.EasyRepairRecipeProvider;
-import stan.ripto.easyrepair.item.EasyRepairItems;
 import stan.ripto.easyrepair.network.EasyRepairNetwork;
 
 import java.util.List;
@@ -38,15 +35,6 @@ public class EasyRepairCommonModEvents {
         gen.addProvider(event.includeServer(), new EasyRepairRecipeProvider(output));
         gen.addProvider(event.includeServer(), new EasyRepairCuriosDataProvider(output, helper, provider));
         gen.addProvider(event.includeServer(), new ForgeAdvancementProvider(output, provider, helper, List.of(new EasyRepairAdvancementProvider())));
-    }
-
-    @SubscribeEvent
-    public static void onBuildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
-            event.accept(EasyRepairItems.REPAIR_ITEM_POUCH_I);
-            event.accept(EasyRepairItems.REPAIR_ITEM_POUCH_II);
-            event.accept(EasyRepairItems.REPAIR_ITEM_POUCH_III);
-        }
     }
 
     @SuppressWarnings("unused")
