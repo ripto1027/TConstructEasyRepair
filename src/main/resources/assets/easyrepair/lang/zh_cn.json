@@ -1,0 +1,10 @@
+{
+	"curios.identifier.pouch": "材料包",
+	"item.easyrepair.repair_item_pouch_i": "修复材料包 I",
+	"item.easyrepair.repair_item_pouch_ii": "修复材料包 II",
+	"item.easyrepair.repair_item_pouch_iii": "修复材料包 III",
+	"key.easyrepair.category": "匠魂: 轻松维修",
+	"key.easyrepair.inventory_open.description": "打开材料包",
+	"message.easyrepair.pouch_empty": "修复失败, 请检查工具袋中是否放入了当前工具对应的维修材料",
+	"message.easyrepair.repair_material_empty": "当前工具所需的维修材料已耗尽, 请检查你的材料包."
+}
