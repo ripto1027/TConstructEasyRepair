@@ -21,7 +21,7 @@ public class EasyRepairLanguageProvider {
             add(TranslateKeys.POUCH_CURIOS_SLOT_NAME, "Pouch");
             add(TranslateKeys.OPEN_POUCH_INVENTORY, "Open the inventory of the pouch");
             add(TranslateKeys.KEY_CATEGORY, "Tinkers' Easy Repair");
-            add(TranslateKeys.FEATURE_DESCRIPTION, "Store repair items in this pouch and keep it in your inventory.When a tool breaks, it will be automatically repaired using the items stored inside the pouch.");
+            add(TranslateKeys.FEATURE_DESCRIPTION, "Store repair items in this pouch and keep it in your inventory. When a tool breaks, it will be automatically repaired using the items stored inside the pouch.");
             add(TranslateKeys.SIZE_DESCRIPTION, "This pouch can store up to %1$d stacks of repair items.");
         }
     }
