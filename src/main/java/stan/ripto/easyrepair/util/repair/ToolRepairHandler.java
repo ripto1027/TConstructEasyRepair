@@ -47,6 +47,8 @@ public class ToolRepairHandler {
             return false;
         }
 
+        final Item repairItem = repairItemData.get(repairItemData.size() - 1).getRepairItemStack().getItem();
+
         for (RepairItemData data : repairItemData) {
             data.repair();
         }
@@ -58,7 +60,6 @@ public class ToolRepairHandler {
                 0.8f + 0.4f * player.getRandom().nextFloat()
         );
 
-        final Item repairItem = repairItemData.get(repairItemData.size() - 1).getRepairItemStack().getItem();
         if (repairItems.stream().noneMatch(stack -> stack.is(repairItem))) {
             player.sendSystemMessage(Component.translatable(TranslateKeys.REPAIR_MATERIAL_EMPTY_MESSAGE));
         }

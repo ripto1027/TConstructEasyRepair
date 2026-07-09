@@ -5,6 +5,9 @@
   "item.easyrepair.repair_item_pouch_iii": "Repair Item Pouch III",
   "key.easyrepair.category": "Tinkers' Easy Repair",
   "key.easyrepair.inventory_open.description": "Open the inventory of the pouch",
+  "key.easyrepair.show_description.description": "Show the description of the pouch",
   "message.easyrepair.pouch_empty": "Repair failed. Please check that it contains the correct repair material for the tool you're using.",
-  "message.easyrepair.repair_material_empty": "The repair material for the tool you're using has been used up. Please check your pouches."
+  "message.easyrepair.repair_material_empty": "The repair material for the tool you're using has been used up. Please check your pouches.",
+  "tooltip.easyrepair.feature_description": "Store repair items in this pouch and keep it in your inventory.\nWhen a tool breaks, it will be automatically repaired using the items stored inside the pouch.",
+  "tooltip.easyrepair.size_description": "This pouch can store up to %1$d stacks of repair items."
 }

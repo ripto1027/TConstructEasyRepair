@@ -21,6 +21,8 @@ public class EasyRepairLanguageProvider {
             add(TranslateKeys.POUCH_CURIOS_SLOT_NAME, "Pouch");
             add(TranslateKeys.OPEN_POUCH_INVENTORY, "Open the inventory of the pouch");
             add(TranslateKeys.KEY_CATEGORY, "Tinkers' Easy Repair");
+            add(TranslateKeys.FEATURE_DESCRIPTION, "Store repair items in this pouch and keep it in your inventory.When a tool breaks, it will be automatically repaired using the items stored inside the pouch.");
+            add(TranslateKeys.SIZE_DESCRIPTION, "This pouch can store up to %1$d stacks of repair items.");
         }
     }
 
@@ -38,6 +40,8 @@ public class EasyRepairLanguageProvider {
             add(TranslateKeys.REPAIR_MATERIAL_EMPTY_MESSAGE, "使用しているツールに対応した修理素材が使い切られました。ポーチを確認してください。");
             add(TranslateKeys.POUCH_CURIOS_SLOT_NAME, "ポーチ");
             add(TranslateKeys.OPEN_POUCH_INVENTORY, "ポーチのインベントリを開く");
+            add(TranslateKeys.FEATURE_DESCRIPTION, "このポーチに修繕アイテムを入れてインベントリに入れておけばツールが壊れてもポーチ内のアイテムを使用して自動で修理される。");
+            add(TranslateKeys.SIZE_DESCRIPTION, "このポーチには%1$dスタックの修繕アイテムが入る。");
         }
     }
 }

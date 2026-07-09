@@ -4,6 +4,9 @@
   "item.easyrepair.repair_item_pouch_ii": "リペアアイテムポーチII",
   "item.easyrepair.repair_item_pouch_iii": "リペアアイテムポーチIII",
   "key.easyrepair.inventory_open.description": "ポーチのインベントリを開く",
+  "key.easyrepair.show_description.description": "ポーチの説明を表示する",
   "message.easyrepair.pouch_empty": "修理に失敗しました。使用しているツールに対応した修理素材がポーチに入っているか確認してください。",
-  "message.easyrepair.repair_material_empty": "使用しているツールに対応した修理素材が使い切られました。ポーチを確認してください。"
+  "message.easyrepair.repair_material_empty": "使用しているツールに対応した修理素材が使い切られました。ポーチを確認してください。",
+  "tooltip.easyrepair.feature_description": "このポーチに修繕アイテムを入れてインベントリに入れておけば\nツールが壊れてもポーチ内のアイテムを使用して自動で修理される。",
+  "tooltip.easyrepair.size_description": "このポーチには%1$dスタックの修繕アイテムが入る。"
 }
