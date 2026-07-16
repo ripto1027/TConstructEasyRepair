@@ -7,6 +7,6 @@
 	"key.easyrepair.inventory_open.description": "打开材料包",
 	"message.easyrepair.pouch_empty": "修复失败, 请检查工具袋中是否放入了当前工具对应的维修材料",
 	"message.easyrepair.repair_material_empty": "当前工具所需的维修材料已耗尽, 请检查你的材料包.",
-	"tooltip.easyrepair.feature_description": "将修复材料存放在此袋中，并将其放在物品栏内。当工具损坏时，会自动使用袋中的材料进行修复.",
+	"tooltip.easyrepair.feature_description": "将修复材料存放在此袋中, 并将其放在物品栏内. 当工具损坏时, 会自动使用袋中的材料进行修复.",
 	"tooltip.easyrepair.size_description": "此袋最多可存放%1$d组修复材料."
 }
