@@ -14,20 +14,27 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import java.util.UUID;
 
 @Mixin(value = ToolDamageUtil.class, remap = false)
-public abstract class EasyRepairDamageMixin {
+public class EasyRepairDamageMixin {
     @Inject(
             method = "damage",
             at = @At("HEAD")
     )
-    private static void onDamage(IToolStackView tool, int amount, LivingEntity entity, ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (!(entity instanceof ServerPlayer player)) return;
+    private static void onDamage(
+            IToolStackView tool,
+            int amount,
+            LivingEntity entity,
+            ItemStack stack,
+            CallbackInfoReturnable<Boolean> cir
+    ) {
+        if (!(entity instanceof ServerPlayer player) || stack == null) {
+            return;
+        }
 
         CompoundTag nbt = stack.getOrCreateTag();
 
-        UUID current = nbt.hasUUID("owner") ? nbt.getUUID("owner") : null;
         UUID holderId = player.getUUID();
 
-        if (!holderId.equals(current)) {
+        if (!nbt.hasUUID("owner") || !holderId.equals(nbt.getUUID("owner"))) {
             nbt.putUUID("owner", holderId);
         }
     }
