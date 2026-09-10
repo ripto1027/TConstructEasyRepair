@@ -10,8 +10,8 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import stan.ripto.easyrepair.util.PouchTier;
 
 public class AbstractPouchScreen<T extends AbstractContainerMenu> extends AbstractContainerScreen<T> {
-    private static final int IMAGE_HEIGHT_BASE = 111;
-    private static final int IMAGE_WIDTH_BASE = 175;
+    private static final int IMAGE_HEIGHT_BASE = 112;
+    private static final int IMAGE_WIDTH_BASE = 176;
     private static final int SLOT_LENGTH = 18;
     private static final int INV_LABEL_Y_MOVE_INT = 91;
 
