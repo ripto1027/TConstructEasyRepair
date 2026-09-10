@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
@@ -17,15 +16,14 @@ import java.util.UUID;
 @Mixin(value = ToolDamageUtil.class, remap = false)
 public class EasyRepairDamageMixin {
     @Inject(
-            method = "damage(Lslimeknights/tconstruct/library/tools/nbt/IToolStackView;ILnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lslimeknights/tconstruct/library/modifiers/ModifierId;)Z",
+            method = "damage",
             at = @At("HEAD")
     )
     private static void onDamage(
-            IToolStackView view,
+            IToolStackView tool,
             int amount,
             LivingEntity entity,
             ItemStack stack,
-            ModifierId id,
             CallbackInfoReturnable<Boolean> cir
     ) {
         if (!(entity instanceof ServerPlayer player) || stack == null) {

@@ -44,6 +44,7 @@ public class EasyRepairLanguageProvider {
             add(TranslateKeys.FEATURE_DESCRIPTION, "このポーチに修繕アイテムを入れてインベントリに入れておけばツールが壊れてもポーチ内のアイテムを使用して自動で修理される。");
             add(TranslateKeys.SIZE_DESCRIPTION, "このポーチには%1$dスタックの修繕アイテムが入る。");
             // sorry, i m Chinese, i don't speak Japanese...
+            // It's fine to keep the mod name in English, since using the English name doesn't sound unnatural in Japanese.
             add(TranslateKeys.CREATIVE_MODE_TAB, "Tinkers' Easy Repair");
         }
     }

@@ -8,5 +8,6 @@
   "message.easyrepair.pouch_empty": "修理に失敗しました。使用しているツールに対応した修理素材がポーチに入っているか確認してください。",
   "message.easyrepair.repair_material_empty": "使用しているツールに対応した修理素材が使い切られました。ポーチを確認してください。",
   "tooltip.easyrepair.feature_description": "このポーチに修繕アイテムを入れてインベントリに入れておけばツールが壊れてもポーチ内のアイテムを使用して自動で修理される。",
-  "tooltip.easyrepair.size_description": "このポーチには%1$dスタックの修繕アイテムが入る。"
+  "tooltip.easyrepair.size_description": "このポーチには%1$dスタックの修繕アイテムが入る。",
+  "key.easyrepair.category": "Tinkers' Easy Repair"
 }

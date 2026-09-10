@@ -1,7 +1,6 @@
 package stan.ripto.easyrepair.mixin;
 
 import net.minecraft.nbt.CompoundTag;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,7 +23,6 @@ public abstract class EasyRepairToolStackMixin {
     private int damage;
 
     @Shadow
-    @Final
     private CompoundTag nbt;
 
     @Shadow
